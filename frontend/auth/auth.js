@@ -33,7 +33,7 @@ async function signup() {
 
         if (res.ok) {
             alert("Signup successful!")
-            window.location.href = "/signin"
+            window.location.href = "/auth/signin"
         } else {
             alert(data.message)
         }

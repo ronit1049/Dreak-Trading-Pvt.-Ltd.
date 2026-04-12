@@ -14,7 +14,7 @@ import { razorpayWebhook } from "./controller/payment-controller/payment.js"
 const app = express()
 app.use(cookieParser())
 app.use(cors({
-    origin: process.env.CIENT_URL,
+    origin: process.env.CLIENT_URL,
     credentials: true
 }))
 
