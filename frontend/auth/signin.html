@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In — Dreak Trading Pvt. Ltd.</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="stylesheet" href="/auth.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Sign In</h1>
+
+        <div class="input-group">
+            <input type="email" id="loginEmail" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="loginPassword" placeholder="Password">
+        </div>
+
+        <div class="forgot">
+            <a href="/recover">Forgot Password?</a>
+        </div>
+
+        <button onclick="signin()">Login</button>
+
+        <div class="link">
+            Don’t have an account? <a href="/signup">Create one</a>
+        </div>
+    </div>
+
+    <script src="/auth.js"></script>
+</body>
+
+</html>

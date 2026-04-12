@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders — Dreak Trading Pvt. Ltd</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+
+            --clr-accent-lt: #f3ead8;
+            --gold-light: #D4B483;
+            --shadow: rgba(44, 34, 24, 0.08);
+            --error: #C0392B;
+            --success: #27AE60;
+            --warning: #E67E22;
+            --info: #2980B9;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Jost', sans-serif;
+            --radius: 4px;
+            --transition: 0.2s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── Breadcrumb ── */
+        .breadcrumb {
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid var(--border-light);
+            margin-top: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .breadcrumb .sep {
+            content: '/';
+            color: var(--primary-dark);
+        }
+
+        .breadcrumb .active {
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        /* ── Page Layout ── */
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 40px 80px;
+        }
+
+        /* ── Page Title ── */
+        .page-title-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 36px;
+            animation: fadeUp 0.45s ease both;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            line-height: 1.1;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        .orders-count {
+            font-size: 12px;
+            color: var(--primary-dark);
+            letter-spacing: 0.06em;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Order Card ── */
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .order-card {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 12px var(--shadow);
+            transition: box-shadow var(--transition), transform var(--transition);
+            animation: fadeUp 0.45s ease both;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .order-card:hover {
+            box-shadow: 0 6px 28px rgba(44, 34, 24, 0.13);
+            transform: translateY(-2px);
+        }
+
+        .order-card:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+
+        .order-card:nth-child(3) {
+            animation-delay: 0.12s;
+        }
+
+        .order-card:nth-child(4) {
+            animation-delay: 0.18s;
+        }
+
+        .order-card:nth-child(5) {
+            animation-delay: 0.24s;
+        }
+
+        .order-card-header {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--light-gray);
+            background: #FDFAF6;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .order-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .order-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .order-meta-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+
+        .order-meta-val {
+            font-size: 13px;
+            font-weight: 400;
+            color: black;
+        }
+
+        .order-number-val {
+            font-family: var(--font-display);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(black);
+            letter-spacing: 0.04em;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+
+        .status-Pending {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .status-Confirmed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-Processing {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .status-Shipped {
+            background: #ede7f6;
+            color: #5e35b1;
+        }
+
+        .status-Delivered {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-Cancelled {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status-Returned {
+            background: #FFF8E1;
+            color: #F57F17;
+        }
+
+        /* Payment badge */
+        .pay-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .pay-Paid {
+            background: #E8F5E9;
+            color: var(--success);
+        }
+
+        .pay-Pending {
+            background: #FEF3E2;
+            color: var(--warning);
+        }
+
+        .pay-Failed {
+            background: #FFEBEE;
+            color: var(--error);
+        }
+
+        .pay-Refunded {
+            background: #EDE7F6;
+            color: #6A1B9A;
+        }
+
+        /* Order body — product thumbnails */
+        .order-card-body {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .order-thumbs {
+            display: flex;
+            align-items: center;
+            gap: -8px;
+        }
+
+        .order-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius);
+            border: 2px solid #fff;
+            object-fit: cover;
+            margin-left: -8px;
+            background: var(--light-gray);
+            box-shadow: 0 1px 4px var(--shadow);
+        }
+
+        .order-thumb:first-child {
+            margin-left: 0;
+        }
+
+        .order-thumb-placeholder {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius);
+            border: 2px solid #fff;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-left: -8px;
+            box-shadow: 0 1px 4px var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .order-thumb-placeholder:first-child {
+            margin-left: 0;
+        }
+
+        .order-thumb-more {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius);
+            border: 2px solid #fff;
+            background: var(--dark);
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: -8px;
+            box-shadow: 0 1px 4px var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .order-summary-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .order-amount {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .order-item-count {
+            font-size: 12px;
+            color: var(--primary-dark);
+        }
+
+        .view-detail-arrow {
+            color: var(--primary-dark);
+            font-size: 18px;
+            transition: transform var(--transition), color var(--transition);
+        }
+
+        .order-card:hover .view-detail-arrow {
+            transform: translateX(4px);
+            color: var(--primary);
+        }
+
+        /* ── Pagination ── */
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+            animation: fadeUp 0.45s 0.3s ease both;
+        }
+
+        .page-btn {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid var(--border-light);
+            border-radius: var(--radius);
+            background: #fff;
+            color: var(--dark);
+            font-family: var(--font-body);
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+        }
+
+        .page-btn:hover {
+            border-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .page-btn.active {
+            background: var(--dark);
+            color: var(--gold-light);
+            border-color: var(--dark);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-btn:disabled:hover {
+            border-color: var(--border-light);
+            color: var(--dark);
+        }
+
+        /* ── Skeleton loader ── */
+        .skeleton-card {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 12px var(--shadow);
+        }
+
+        .skeleton-header {
+            padding: 16px 24px;
+            background: #FDFAF6;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            gap: 40px;
+        }
+
+        .skeleton-body {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -600px 0;
+            }
+
+            100% {
+                background-position: 600px 0;
+            }
+        }
+
+        .skel {
+            background: linear-gradient(90deg, var(--light-gray) 25%, #F5EFE6 50%, var(--light-gray) 75%);
+            background-size: 600px 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 3px;
+        }
+
+        .skel-line {
+            height: 12px;
+        }
+
+        .skel-sm {
+            width: 80px;
+        }
+
+        .skel-md {
+            width: 140px;
+        }
+
+        .skel-lg {
+            width: 200px;
+        }
+
+        .skel-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius);
+        }
+
+        .skel-title {
+            width: 120px;
+            height: 18px;
+        }
+
+        /* ── Empty state ── */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeUp 0.45s ease both;
+        }
+
+        .empty-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            background: rgba(117, 149, 179, 0.514);
+        }
+
+        .empty-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .empty-sub {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .btn-shop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            background-color: var(--primary-dark);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-shop:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--dark);
+            color: var(--warm-white);
+            padding: 14px 24px;
+            border-radius: var(--radius);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+            z-index: 9999;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.error {
+            background: #C0392B;
+        }
+
+        .toast.success {
+            background: #27AE60;
+        }
+
+        /* ── Footer ── */
+        .footer-grid {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 680px) {
+            .page-wrap {
+                padding: 28px 16px 60px;
+            }
+
+            .breadcrumb {
+                padding: 12px 16px;
+            }
+
+            .order-card-header {
+                padding: 12px 16px;
+            }
+
+            .order-card-body {
+                padding: 12px 16px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .order-meta {
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="top-wrapper" id="topWrapper">
+        <!-- Announcement Bar -->
+        <div class="announcement-bar">
+            <div class="container">
+                <div class="announcement-left">
+                    <div class="announcement-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Free Shipping on Orders</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-undo-alt"></i>
+                        <span>30-Day Returns</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>2-Year Warranty</span>
+                    </div>
+                </div>
+                <div class="announcement-right">
+                    <a href="" id="adminPanelLink" class="announcement-link" style="display: none;" target="_blank">
+                        <i class="fas fa-user-shield"></i> Admin Panel
+                    </a>
+                    <div class="user-menu" id="userMenu">
+                        <div class="user-trigger" id="userTrigger">
+                            <i class="fas fa-user"></i>
+                            <span id="userText">Login</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- NAV -->
+        <header class="main-header" id="header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <img src="/icons/logo.png" alt="logo">
+                </a>
+
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <nav class="nav-menu">
+                    <div class="close-menu" id="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-grid">
+                                <div class="mega-col">
+                                    <h4>Living Room</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=sofa"><i class="fas fa-chevron-right"></i> Sofas</a>
+                                        </li>
+                                        <li><a href="/shop?cat=sectional"><i class="fas fa-chevron-right"></i>
+                                                Sectionals</a></li>
+                                        <li><a href="/shop?cat=coffee"><i class="fas fa-chevron-right"></i> Coffee
+                                                Tables</a></li>
+                                        <li><a href="/shop?cat=tv"><i class="fas fa-chevron-right"></i> TV Units</a>
+                                        </li>
+                                        <li><a href="/shop?cat=chair"><i class="fas fa-chevron-right"></i>
+                                                Armchairs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Bedroom</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=bed"><i class="fas fa-chevron-right"></i> Beds</a>
+                                        </li>
+                                        <li><a href="/shop?cat=mattress"><i class="fas fa-chevron-right"></i>
+                                                Mattresses</a></li>
+                                        <li><a href="/shop?cat=wardrobe"><i class="fas fa-chevron-right"></i>
+                                                Wardrobes</a></li>
+                                        <li><a href="/shop?cat=nightstand"><i class="fas fa-chevron-right"></i>
+                                                Nightstands</a></li>
+                                        <li><a href="/shop?cat=dresser"><i class="fas fa-chevron-right"></i>
+                                                Dressers</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Dining</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=dining-table"><i class="fas fa-chevron-right"></i>
+                                                Dining Tables</a></li>
+                                        <li><a href="/shop?cat=dining-chair"><i class="fas fa-chevron-right"></i>
+                                                Dining Chairs</a></li>
+                                        <li><a href="/shop?cat=buffet"><i class="fas fa-chevron-right"></i>
+                                                Buffets</a></li>
+                                        <li><a href="/shop?cat=bar-stool"><i class="fas fa-chevron-right"></i> Bar
+                                                Stools</a></li>
+                                        <li><a href="/shop?cat=china-cabinet"><i class="fas fa-chevron-right"></i>
+                                                China Cabinets</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-featured">
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Free Shipping on Orders</span>
+                                </div>
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>30-Day Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/#categories" class="nav-link">Collections</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/services" class="nav-link">Services</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/contact" class="nav-link">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons">
+                    <div class="icon-wrapper">
+                        <a href="/cart" class="icon-link cart-icon" id="header-cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="header-cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search products...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <nav class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">›</span>
+        <span class="active">My Orders</span>
+    </nav>
+
+    <main class="page-wrap">
+        <div class="page-title-row">
+            <h1 class="page-title">My Orders</em></h1>
+            <span class="orders-count" id="orders-count"></span>
+        </div>
+
+        <div class="orders-list" id="orders-list">
+            <!-- Skeleton loaders -->
+            ${[1,2,3].map(() => `
+            <div class="skeleton-card">
+                <div class="skeleton-header">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                        <div class="skel skel-line skel-sm"></div>
+                        <div class="skel skel-title"></div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                        <div class="skel skel-line skel-sm"></div>
+                        <div class="skel skel-line skel-md"></div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                        <div class="skel skel-line skel-sm"></div>
+                        <div class="skel skel-line skel-sm"></div>
+                    </div>
+                </div>
+                <div class="skeleton-body">
+                    <div style="display:flex;gap:8px">
+                        <div class="skel skel-circle"></div>
+                        <div class="skel skel-circle"></div>
+                    </div>
+                    <div class="skel skel-line skel-md"></div>
+                </div>
+            </div>`).join('')}
+        </div>
+
+        <div class="pagination" id="pagination" style="display:none"></div>
+    </main>
+
+    <div class="toast" id="toast"><span id="toast-msg"></span></div>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/+91811512115" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo">
+                    <img src="/icons/logo.png" alt="logo">
+                </span>
+                <p>Trusted home and office furniture since 2010. Crafted with love, delivered with care to homes across
+                    India.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Living Room</a></li>
+                    <li><a href="#">Bedroom</a></li>
+                    <li><a href="#">Dining Room</a></li>
+                    <li><a href="#">Home Office</a></li>
+                    <li><a href="#">Outdoor</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-phone"></i> +91 81151 12115</p>
+                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div class="policies">
+                <a href="/policies/refund-policy">Refund policy</a>&middot;
+                <a href="/policies/privacy-policy">Privacy policy</a>&middot;
+                <a href="/policies/terms-of-service">Terms of service</a>&middot;
+                <a href="/policies/shipping-policy">Shipping policy</a>
+            </div>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script type="module">
+        import { getCategoryTree, getAllCategories } from "./category/categoryService.js";
+        import { BASE_URL } from "./config.js";
+
+        const fmt = n => "₹" + Math.round(Number(n)).toLocaleString("en-IN");
+        const fmtDate = d => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+
+        let currentPage = 1;
+        let totalPages = 1;
+
+        let toastTimer;
+        function showToast(msg, type = "info") {
+            const t = document.getElementById("toast");
+            t.className = "toast " + type;
+            document.getElementById("toast-msg").textContent = msg;
+            t.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove("show"), 3500);
+        }
+
+        function statusBadge(status) {
+            return `<span class="status-badge status-${status}">${status}</span>`;
+        }
+
+        function payBadge(payment) {
+            const method = payment.method === "COD" ? "COD" : payment.method;
+            return `<span class="pay-status pay-${payment.status}">${method} · ${payment.status}</span>`;
+        }
+
+        function renderOrders(orders) {
+            const list = document.getElementById("orders-list");
+            if (orders.length === 0) {
+                list.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon"><i class="fas fa-box-open"></i></div>
+          <h2 class="empty-title">No orders yet</h2>
+          <p class="empty-sub">You haven't placed any orders. Start exploring our collection.</p>
+          <a href="/" class="btn-shop">Browse Furniture</a>
+        </div>`;
+                return;
+            }
+
+            list.innerHTML = orders.map((order, i) => {
+                const items = order.items || [];
+                const visible = items.slice(0, 3);
+                const extra = items.length - 3;
+
+                const thumbsHtml = visible.map(item =>
+                    item.image
+                        ? `<img class="order-thumb" src="${item.image}" alt="${item.productName}" loading="lazy"/>`
+                        : `<div class="order-thumb-placeholder">🛋️</div>`
+                ).join("") + (extra > 0 ? `<div class="order-thumb-more">+${extra}</div>` : "");
+
+                const totalItems = items.reduce((s, i) => s + i.quantity, 0);
+
+                return `
+        <a class="order-card" href="/orderDetail?orderId=${order._id}" style="animation-delay:${i * 0.06}s">
+          <div class="order-card-header">
+            <div class="order-meta">
+              <div class="order-meta-item">
+                <span class="order-meta-label">Order</span>
+                <span class="order-number-val">${order.orderNumber}</span>
+              </div>
+              <div class="order-meta-item">
+                <span class="order-meta-label">Placed on</span>
+                <span class="order-meta-val">${fmtDate(order.createdAt)}</span>
+              </div>
+              <div class="order-meta-item">
+                <span class="order-meta-label">Total</span>
+                <span class="order-meta-val" style="font-family:var(--font-display);font-size:15px;font-weight:500">${fmt(order.totalAmount)}</span>
+              </div>
+              <div class="order-meta-item">
+                <span class="order-meta-label">Payment</span>
+                ${payBadge(order.payment)}
+              </div>
+            </div>
+            ${statusBadge(order.orderStatus)}
+          </div>
+          <div class="order-card-body">
+            <div style="display:flex;align-items:center;gap:16px">
+              <div class="order-thumbs">${thumbsHtml}</div>
+              <span class="order-item-count">${totalItems} item${totalItems !== 1 ? "s" : ""}</span>
+            </div>
+            <div class="order-summary-right">
+              <span class="order-amount">${fmt(order.totalAmount)}</span>
+              <span class="view-detail-arrow">→</span>
+            </div>
+          </div>
+        </a>`;
+            }).join("");
+        }
+
+        function renderPagination() {
+            const el = document.getElementById("pagination");
+            if (totalPages <= 1) {
+                el.style.display = "none";
+                return;
+            }
+            el.style.display = "flex";
+
+            // 1. Generate HTML without inline onclick. 
+            // Use data-attributes to store the page number.
+            let html = `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>`;
+
+            for (let p = 1; p <= totalPages; p++) {
+                html += `<button class="page-btn ${p === currentPage ? "active" : ""}" data-page="${p}">${p}</button>`;
+            }
+
+            html += `<button class="page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>
+                <i class="fas fa-chevron-right"></i>
+             </button>`;
+
+            el.innerHTML = html;
+
+            // 2. Select all buttons and attach listeners
+            const buttons = el.querySelectorAll(".page-btn");
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    // Get the page number from the data attribute
+                    const pageNum = parseInt(btn.getAttribute("data-page"));
+
+                    // Only trigger if the button isn't disabled and page is valid
+                    if (!btn.disabled && pageNum >= 1 && pageNum <= totalPages) {
+                        goPage(pageNum);
+                    }
+                });
+            });
+        }
+
+        async function loadOrders(page = 1) {
+            try {
+                const res = await fetch(`${BASE_URL}/order/my-orders?page=${page}&limit=10`, {
+                    credentials: "include"
+                });
+                if (res.status === 401) {
+                    window.location.href = "/auth/signin";
+                    return;
+                }
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.message || "Failed to load orders");
+
+                currentPage = data.page;
+                totalPages = data.totalPages;
+
+                const countEl = document.getElementById("orders-count");
+                countEl.textContent = data.orders.length > 0 ? `Page ${currentPage} of ${totalPages}` : "";
+
+                renderOrders(data.orders);
+                renderPagination();
+
+            } catch (err) {
+                showToast(err.message || "Failed to load orders", "error");
+                document.getElementById("orders-list").innerHTML = `
+        <div class="empty-state">
+          <span class="empty-icon">⚠️</span>
+          <h2 class="empty-title">Something went wrong</h2>
+          <p class="empty-sub">${err.message}</p>
+        </div>`;
+            }
+        }
+
+        function goPage(p) {
+            if (p < 1 || p > totalPages) return;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            loadOrders(p);
+        }
+
+        function syncCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+                document.querySelectorAll(".cart-count").forEach(el => {
+                    el.textContent = total;
+                });
+            } catch {
+                // localStorage unavailable — leave badge as-is
+            }
+        }
+
+        async function buildNavMegaMenu() {
+            const megaGrid = document.querySelector(".mega-grid");
+            if (!megaGrid) return;
+
+            try {
+                const { tree } = await getCategoryTree();
+                if (!tree || tree.length === 0) return; // Keep static HTML as fallback
+
+                // Build one .mega-col per top-level category
+                const cols = tree.map((topCat) => {
+                    const children = topCat.children || [];
+                    const childLinks = children
+                        .map(
+                            (child) =>
+                                `<li>
+                            <a href="/shop?slug=${encodeURIComponent(child.slug)}">
+                                <i class="fas fa-chevron-right"></i>
+                                ${escapeHtml(child.name)}
+                            </a>
+                        </li>`
+                        )
+                        .join("");
+
+                    return `
+                <div class="mega-col">
+                    <h4>
+                        <a href="/category?slug=${encodeURIComponent(topCat.slug)}" class="mega-col-heading-link">
+                            ${escapeHtml(topCat.name)}
+                        </a>
+                    </h4>
+                    <ul class="mega-links">
+                        ${childLinks || `<li><a href="/category?slug=${encodeURIComponent(topCat.slug)}"><i class="fas fa-chevron-right"></i> View All</a></li>`}
+                    </ul>
+                </div>`;
+                });
+
+                megaGrid.innerHTML = cols.join("");
+            } catch (err) {
+                // Silently fall back to the static HTML already in the DOM
+                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+            }
+        }
+
+        function escapeHtml(s) {
+            return String(s ?? "")
+                .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+
+        async function loginSwap() {
+            const userText = document.getElementById("userText")
+            const userTrigger = document.getElementById("userTrigger")
+            const adminPanelLink = document.getElementById("adminPanelLink")
+
+            let isLoggedIn = false
+
+            // check auth from backend
+            try {
+                const res = await fetch(`${BASE_URL}/auth/me`, {
+                    credentials: "include"
+                })
+
+                const data = await res.json()
+                if (data.isLoggedIn) {
+                    isLoggedIn = true,
+                        userText.textContent = "Account"
+
+                    // role check
+                    if (data.user.role === "admin") {
+                        adminPanelLink.style.display = "inline-flex"
+                    }
+
+                } else {
+                    userText.textContent = "Login"
+                }
+            } catch (err) {
+                console.error(err)
+                userText.textContent = "Login"
+            }
+
+            // click behavior
+            userTrigger.addEventListener("click", (e) => {
+                e.stopPropagation()
+
+                if (!isLoggedIn) {
+                    window.location.href = "/auth/signin"
+                } else {
+                    window.location.href = "/account"
+                }
+            })
+
+            adminPanelLink.addEventListener("click", (e) => {
+                e.preventDefault()
+                window.open("/admin/admin-panel", "_blank")
+            })
+        }
+
+        async function buildFooterShopLinks() {
+            // Target the <ul> inside the footer column whose <h4> is "Shop"
+            const footerShopUl = findFooterShopUl();
+            if (!footerShopUl) return;
+
+            try {
+                const { categories } = await getAllCategories();
+                if (!categories || categories.length === 0) return;
+
+                // Only top-level categories (no parent) in footer
+                const topLevel = categories.filter((c) => !c.parent);
+
+                if (topLevel.length === 0) return;
+
+                footerShopUl.innerHTML = topLevel
+                    .map(
+                        (cat) =>
+                            `<li>
+                        <a href="/category?slug=${encodeURIComponent(cat.slug)}">
+                            ${escapeHtml(cat.name)}
+                        </a>
+                    </li>`
+                    )
+                    .join("");
+            } catch (err) {
+                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+            }
+        }
+
+        function findFooterShopUl() {
+            const footerCols = document.querySelectorAll(".footer-col");
+            for (const col of footerCols) {
+                const heading = col.querySelector("h4");
+                if (heading && heading.textContent.trim().toLowerCase() === "shop") {
+                    return col.querySelector("ul");
+                }
+            }
+            return null;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            syncCartBadge()
+            buildNavMegaMenu()
+            loginSwap()
+            buildFooterShopLinks()
+        })
+
+        loadOrders();
+    </script>
+</body>
+
+</html>

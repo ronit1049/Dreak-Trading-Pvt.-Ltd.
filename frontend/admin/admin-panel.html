@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin-panel.css" />
+</head>
+
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">DREAK TRADING<br><em>ADMIN PANEL</em></span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item active" data-tab="register">
+                        <span class="nav-icon">◈</span> Admin Registration
+                    </li>
+                    <li class="nav-item" data-tab="category">
+                        <span class="nav-icon">◈</span> Category
+                    </li>
+                    <li class="nav-item" data-tab="product">
+                        <span class="nav-icon">◈</span> Product
+                    </li>
+                    <li class="nav-item" data-tab="order">
+                        <span class="nav-icon">◈</span> Orders
+                    </li>
+                    <li class="nav-item" data-tab="payment">
+                        <span class="nav-icon">◈</span> Payments
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">Panel v1.0</div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1 id="page-title">Admin Registration</h1>
+                <div class="header-meta" id="header-meta"></div>
+            </header>
+
+            <section class="content-area">
+
+                <!-- ===== ADMIN REGISTRATION ===== -->
+                <div class="tab-content active" id="register">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Register New Admin</h2>
+                            <p class="card-subtitle">Create a new administrator account</p>
+                        </div>
+                        <form id="adminForm" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" id="firstName" placeholder="e.g. Admin" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" id="lastName" placeholder="e.g. User" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="email" placeholder="admin@example.com" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="password"
+                                    placeholder="Min 8 chars, uppercase, number, symbol" required />
+                            </div>
+                            <button type="submit" class="btn">Register Admin</button>
+                            <p id="responseMsg" class="msg"></p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ===== CATEGORY ===== -->
+                <div class="tab-content" id="category">
+                    <div class="sub-tabs">
+                        <button class="sub-tab active" data-subtab="createCat">Create</button>
+                        <button class="sub-tab" data-subtab="updateCat">Update</button>
+                        <button class="sub-tab" data-subtab="deleteCat">Delete</button>
+                    </div>
+
+                    <!-- Create Category -->
+                    <div class="sub-content active" id="createCat">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Create Category</h2>
+                                <p class="card-subtitle">Top-level or sub-category (max depth: 1)</p>
+                            </div>
+                            <form id="createCategoryForm" class="form">
+                                <div class="form-group">
+                                    <label>Category Name <span class="required">*</span></label>
+                                    <input type="text" id="catName" placeholder="e.g. Tables" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea id="catDesc" placeholder="Brief description of this category"
+                                        rows="3"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Parent Category</label>
+                                        <select id="parentCategory">
+                                            <option value="">— Top Level —</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sort Order</label>
+                                        <input type="number" id="sortOrder" placeholder="0" min="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Thumbnail Image <span class="hint">(required for
+                                            sub-categories)</span></label>
+                                    <input type="file" id="catImage" accept=".jpg,.jpeg,.png,.webp" />
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="isFeatured" />
+                                        <span>Mark as Featured</span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn">Create Category</button>
+                                <p id="createCatMsg" class="msg"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Update Category -->
+                    <div class="sub-content" id="updateCat">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Update Category</h2>
+                                <p class="card-subtitle">Only filled fields will be updated</p>
+                            </div>
+                            <form id="updateCategoryForm" class="form">
+                                <div class="form-group">
+                                    <label>Select Category <span class="required">*</span></label>
+                                    <select id="updateCategorySelect" required>
+                                        <option value="">— Select —</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Name</label>
+                                    <input type="text" id="updateName" placeholder="Leave blank to keep current" />
+                                </div>
+                                <div class="form-group">
+                                    <label>New Description</label>
+                                    <textarea id="updateDesc" placeholder="Leave blank to keep current"
+                                        rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Thumbnail</label>
+                                    <input type="file" id="updateImage" accept=".jpg,.jpeg,.png,.webp" />
+                                </div>
+                                <button type="submit" class="btn">Update Category</button>
+                                <p id="updateCatMsg" class="msg"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Delete Category -->
+                    <div class="sub-content" id="deleteCat">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Delete Category</h2>
+                                <p class="card-subtitle">This performs a soft delete (deactivates the category)</p>
+                            </div>
+                            <form id="deleteCategoryForm" class="form">
+                                <div class="form-group">
+                                    <label>Select Category <span class="required">*</span></label>
+                                    <select id="deleteCategorySelect" required>
+                                        <option value="">— Select —</option>
+                                    </select>
+                                </div>
+                                <div class="warning-box">
+                                    ⚠ This will deactivate the category. It will no longer be visible to customers.
+                                </div>
+                                <button type="submit" class="btn btn-danger">Deactivate Category</button>
+                                <p id="deleteCatMsg" class="msg"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PRODUCT ===== -->
+                <div class="tab-content" id="product">
+                    <div class="sub-tabs">
+                        <button class="sub-tab active" data-subtab="createProduct">Create</button>
+                        <button class="sub-tab" data-subtab="updateProduct">Update</button>
+                        <button class="sub-tab" data-subtab="manageProducts">Manage</button>
+                    </div>
+
+                    <!-- Create Product -->
+                    <div class="sub-content active" id="createProduct">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Create Product</h2>
+                                <p class="card-subtitle">New products start as inactive — upload images then activate
+                                </p>
+                            </div>
+                            <form id="createProductForm" class="form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Product Name <span class="required">*</span></label>
+                                        <input type="text" id="prodName" placeholder="e.g. Comfort 3-Seater Sofa"
+                                            required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Brand</label>
+                                        <input type="text" id="brand" placeholder="e.g. Jimmy's" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description <span class="required">*</span></label>
+                                    <textarea id="prodDesc" placeholder="Full product description" rows="4"
+                                        required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Short Description</label>
+                                    <input type="text" id="prodShortDesc" placeholder="One-line summary" />
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Category <span class="required">*</span></label>
+                                        <select id="prodCategory" required>
+                                            <option value="">— Select Category —</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Warranty</label>
+                                        <input type="text" id="warranty" placeholder="e.g. 2 years" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags <span class="hint">(comma separated)</span></label>
+                                    <input type="text" id="tags" placeholder="e.g. bed, metal, queen size" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Specifications <span class="hint">(JSON format)</span></label>
+                                    <textarea id="specs"
+                                        placeholder='{"weight":"45kg","assembly":"required","material":"wood"}'
+                                        rows="3"></textarea>
+                                </div>
+
+                                <div class="section-divider">
+                                    <span>Variants <span class="required">*</span></span>
+                                    <button type="button" id="addVariantBtn" class="btn-secondary">+ Add
+                                        Variant</button>
+                                </div>
+                                <div class="info-box">At least one variant is required. Each variant needs a SKU, price,
+                                    and stock.</div>
+                                <div id="variantContainer"></div>
+
+                                <button type="submit" class="btn">Create Product</button>
+                                <p id="createProductMsg" class="msg"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Update Product -->
+                    <div class="sub-content" id="updateProduct">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Update Product</h2>
+                                <p class="card-subtitle">Filter by category, then select a product to edit</p>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Filter by Category</label>
+                                    <select id="updateProdCategory">
+                                        <option value="">— All Categories —</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Product</label>
+                                    <select id="updateProductSelect">
+                                        <option value="">— Select Product —</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <form id="updateProductForm" class="form" style="display:none">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="updateProdName" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea id="updateProdDesc" rows="4"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Brand</label>
+                                    <input type="text" id="updateProdBrand" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Warranty</label>
+                                    <input type="text" id="updateProdWarranty" />
+                                </div>
+                                <button type="submit" class="btn">Save Changes</button>
+                                <p id="updateProductMsg" class="msg"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Manage Products -->
+                    <div class="sub-content" id="manageProducts">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>All Products</h2>
+                                <p class="card-subtitle">Manage status, images, and variants</p>
+                            </div>
+
+                            <div class="info-box">
+                                <strong>Activation workflow:</strong> Create product → Upload images → Then activate.
+                                Use the filter below to view inactive products.
+                            </div>
+
+                            <div class="filters-grid product-filters-grid">
+                                <div class="form-group">
+                                    <label>Search</label>
+                                    <input type="text" id="productSearch" placeholder="Search by name..." />
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select id="productStatusFilter">
+                                        <option value="">All Products</option>
+                                        <option value="active">Active Only</option>
+                                        <option value="inactive">Inactive Only</option>
+                                    </select>
+                                </div>
+                                <div class="form-group filter-btn-group">
+                                    <button onclick="loadProducts()" class="btn">Apply</button>
+                                </div>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table id="productTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                            <th>Featured</th>
+                                            <th>Images</th>
+                                            <th>Variants</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <!-- Image Manager -->
+                            <div id="imageManager" class="manager-panel" style="display:none">
+                                <div class="manager-header">
+                                    <h3>Image Manager</h3>
+                                    <button onclick="closeImageManager()" class="btn-close">✕</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload New Images</label>
+                                    <input type="file" id="imageUpload" multiple accept=".jpg,.jpeg,.png,.webp" />
+                                    <button onclick="uploadImages()" class="btn-secondary" style="margin-top:8px">Upload
+                                        Images</button>
+                                </div>
+                                <div id="imageList" class="image-grid"></div>
+                            </div>
+
+                            <!-- Variant Manager -->
+                            <div id="variantManager" class="manager-panel" style="display:none">
+                                <div class="manager-header">
+                                    <h3>Variant Manager</h3>
+                                    <button onclick="closeVariantManager()" class="btn-close">✕</button>
+                                </div>
+                                <button onclick="addNewVariant()" class="btn-secondary" style="margin-bottom:12px">+ Add
+                                    Variant</button>
+                                <div id="variantList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ORDERS ===== -->
+                <div class="tab-content" id="order">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Order Management</h2>
+                            <p class="card-subtitle">View, filter, and manage all orders</p>
+                        </div>
+
+                        <div class="filters-grid">
+                            <div class="form-group">
+                                <label>Search Order Number</label>
+                                <input type="text" id="searchOrder" placeholder="e.g. ORD-MMU6635T-..." />
+                            </div>
+                            <div class="form-group">
+                                <label>Order Status</label>
+                                <select id="filterStatus">
+                                    <option value="">All Statuses</option>
+                                    <option>Pending</option>
+                                    <option>Confirmed</option>
+                                    <option>Processing</option>
+                                    <option>Shipped</option>
+                                    <option>Delivered</option>
+                                    <option>Cancelled</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Status</label>
+                                <select id="filterPayment">
+                                    <option value="">All Payments</option>
+                                    <option>Pending</option>
+                                    <option>Paid</option>
+                                    <option>Failed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date From</label>
+                                <input type="date" id="dateFrom" />
+                            </div>
+                            <div class="form-group">
+                                <label>Date To</label>
+                                <input type="date" id="dateTo" />
+                            </div>
+                            <div class="form-group filter-btn-group">
+                                <button onclick="loadOrders()" class="btn">Apply Filters</button>
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table id="orderTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order No</th>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                        <th>Payment</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
+                        <div id="pagination" class="pagination"></div>
+                    </div>
+
+                    <!-- Order Detail Panel -->
+                    <div id="orderDetailPanel" class="order-detail-panel" style="display:none">
+                        <div class="panel-header">
+                            <h3 id="orderDetailTitle">Order Details</h3>
+                            <button onclick="closeOrderDetail()" class="btn-close">✕</button>
+                        </div>
+                        <div id="orderDetailContent"></div>
+                    </div>
+                </div>
+
+                <!-- ===== PAYMENTS ===== -->
+                <div class="tab-content" id="payment">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Payment Management</h2>
+                            <p class="card-subtitle">Monitor payment statuses and process refunds for online orders</p>
+                        </div>
+
+                        <div class="info-box">
+                            Refunds are only available for <strong>Razorpay (online)</strong> orders with payment status
+                            <strong>Paid</strong>. COD orders cannot be refunded through this panel.
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="filters-grid payment-filters-grid">
+                            <div class="form-group">
+                                <label>Payment Status</label>
+                                <select id="filterPaymentStatus">
+                                    <option value="">All Statuses</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Failed">Failed</option>
+                                    <option value="Refunded">Refunded</option>
+                                </select>
+                            </div>
+                            <div class="form-group filter-btn-group">
+                                <button onclick="loadPayments()" class="btn">Apply Filter</button>
+                            </div>
+                        </div>
+
+                        <div class="filters-grid payment-filters-grid">
+                            <div class="form-group">
+                                <label>Search by Order Number</label>
+                                <input type="text" id="paymentOrderSearch" placeholder="e.g. ORD-MMU6635T-TDPDCP">
+                            </div>
+                            <div class="form-group filter-btn-group">
+                                <button onclick="searchPaymentByOrder()" class="btn">Search</button>
+                            </div>
+                        </div>
+
+                        <div id="paymentSearchBanner" style="display:none" class="warning-box"
+                            style="margin-bottom:12px">
+                            Showing results for order: <strong id="paymentSearchLabel"></strong>
+                            <button onclick="clearPaymentSearch()" class="btn-xs neutral" style="margin-left:12px">✕
+                                Clear</button>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table id="paymentTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order No</th>
+                                        <th>Method</th>
+                                        <th>Gateway ID</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentTableBody"></tbody>
+                            </table>
+                        </div>
+
+                        <div id="paymentPagination" class="pagination"></div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="./admin-panel.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category — Dreak Trading Pvt. Ltd.</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* ── Reset & Base ─────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --clr-bg: #faf9f7;
+            --clr-accent-lt: #f3ead8;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Jost', sans-serif;
+            --radius-md: 12px;
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.10);
+            --transition: 0.22s ease;
+            --max-w: 1240px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--clr-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Breadcrumb ──────────────────────────────── */
+        .breadcrumb-bar {
+            background: #fff;
+            border-bottom: 1px solid var(--border-light);
+            padding: 12px 0;
+        }
+
+        .breadcrumb-bar .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            list-style: none;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .breadcrumb li a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .breadcrumb li.active {
+            color: rgba(117, 149, 179, 0.514);
+            font-weight: 500;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: "/";
+            margin-left: 6px;
+            color: var(--primary-dark);
+        }
+
+        /* ── Category Hero ───────────────────────────── */
+        .cat-hero {
+            background: #fff;
+            border-bottom: 1px solid var(--border-light);
+            padding: 56px 0 48px;
+        }
+
+        .cat-hero .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .cat-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            background: rgba(117, 149, 179, 0.514);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .cat-hero h1 {
+            font-family: var(--font-display);
+            color: var(--primary-dark);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            max-width: 640px;
+            margin-bottom: 16px;
+        }
+
+        .cat-hero p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* ── Skeleton for hero ────────────────────────── */
+        .skeleton {
+            background: linear-gradient(90deg, #ede9e3 25%, #e4dfd8 50%, #ede9e3 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 6px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0
+            }
+
+            100% {
+                background-position: -200% 0
+            }
+        }
+
+        .skel-tag {
+            width: 120px;
+            height: 24px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .skel-h1 {
+            width: 60%;
+            height: 48px;
+            margin-bottom: 12px;
+        }
+
+        .skel-h1b {
+            width: 40%;
+            height: 48px;
+            margin-bottom: 20px;
+        }
+
+        .skel-p {
+            width: 80%;
+            height: 16px;
+            margin-bottom: 8px;
+        }
+
+        .skel-p2 {
+            width: 60%;
+            height: 16px;
+        }
+
+        /* ── Subcategories Section ───────────────────── */
+        .subcat-section {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 56px 24px 80px;
+        }
+
+        .subcat-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            color: var(--primary-dark);
+        }
+
+        .subcat-sub {
+            color: var(--primary);
+            font-size: 0.92rem;
+            margin-bottom: 36px;
+        }
+
+        /* ── Subcategory Grid ─────────────────────────── */
+        .subcat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* ── Subcategory Card ─────────────────────────── */
+        .subcat-card {
+            display: block;
+            text-decoration: none;
+            color: var(--primary-dark);
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+        }
+
+        .subcat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .subcat-card:hover .subcat-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .subcat-img-wrap {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .subcat-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        .subcat-card:hover .subcat-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .subcat-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            background: var(--clr-accent-lt);
+        }
+
+        .subcat-info {
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .subcat-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        .subcat-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity var(--transition), transform var(--transition);
+        }
+
+        /* ── Skeleton cards ───────────────────────────── */
+        .subcat-skel {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .subcat-skel-img {
+            aspect-ratio: 4/3;
+        }
+
+        .subcat-skel-body {
+            padding: 16px 18px;
+        }
+
+        .subcat-skel-line {
+            height: 14px;
+            width: 70%;
+        }
+
+        /* ── Empty / Error states ─────────────────────── */
+        .state-box {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--text-muted);
+        }
+
+        .state-box i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.4;
+        }
+
+        .state-box p {
+            font-size: 0.95rem;
+        }
+
+        /* ── Responsive ───────────────────────────────── */
+        @media (max-width: 600px) {
+            .subcat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .cat-hero {
+                padding: 36px 0 32px;
+            }
+
+            .subcat-section {
+                padding: 36px 16px 56px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="top-wrapper" id="topWrapper">
+        <!-- Announcement Bar -->
+        <div class="announcement-bar">
+            <div class="container">
+                <div class="announcement-left">
+                    <div class="announcement-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Free Shipping on Orders</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-undo-alt"></i>
+                        <span>30-Day Returns</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>2-Year Warranty</span>
+                    </div>
+                </div>
+                <div class="announcement-right">
+                    <a href="" id="adminPanelLink" class="announcement-link" style="display: none;" target="_blank">
+                        <i class="fas fa-user-shield"></i> Admin Panel
+                    </a>
+                    <div class="user-menu" id="userMenu">
+                        <div class="user-trigger" id="userTrigger">
+                            <i class="fas fa-user"></i>
+                            <span id="userText">Login</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAV -->
+        <header class="main-header" id="header">
+            <div class="container">
+                <a href="/" class="logo"><img src="/icons/logo.png" alt="logo"></a>
+
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <nav class="nav-menu">
+                    <div class="close-menu" id="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-grid">
+                                <div class="mega-col">
+                                    <h4>Living Room</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=sofa"><i class="fas fa-chevron-right"></i> Sofas</a>
+                                        </li>
+                                        <li><a href="/shop?cat=sectional"><i class="fas fa-chevron-right"></i>
+                                                Sectionals</a></li>
+                                        <li><a href="/shop?cat=coffee"><i class="fas fa-chevron-right"></i> Coffee
+                                                Tables</a></li>
+                                        <li><a href="/shop?cat=tv"><i class="fas fa-chevron-right"></i> TV Units</a>
+                                        </li>
+                                        <li><a href="/shop?cat=chair"><i class="fas fa-chevron-right"></i>
+                                                Armchairs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Bedroom</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=bed"><i class="fas fa-chevron-right"></i> Beds</a>
+                                        </li>
+                                        <li><a href="/shop?cat=mattress"><i class="fas fa-chevron-right"></i>
+                                                Mattresses</a></li>
+                                        <li><a href="/shop?cat=wardrobe"><i class="fas fa-chevron-right"></i>
+                                                Wardrobes</a></li>
+                                        <li><a href="/shop?cat=nightstand"><i class="fas fa-chevron-right"></i>
+                                                Nightstands</a></li>
+                                        <li><a href="/shop?cat=dresser"><i class="fas fa-chevron-right"></i>
+                                                Dressers</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Dining</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=dining-table"><i class="fas fa-chevron-right"></i>
+                                                Dining Tables</a></li>
+                                        <li><a href="/shop?cat=dining-chair"><i class="fas fa-chevron-right"></i>
+                                                Dining Chairs</a></li>
+                                        <li><a href="/shop?cat=buffet"><i class="fas fa-chevron-right"></i>
+                                                Buffets</a></li>
+                                        <li><a href="/shop?cat=bar-stool"><i class="fas fa-chevron-right"></i> Bar
+                                                Stools</a></li>
+                                        <li><a href="/shop?cat=china-cabinet"><i class="fas fa-chevron-right"></i>
+                                                China Cabinets</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-featured">
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Free Shipping on Orders</span>
+                                </div>
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>30-Day Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/#categories" class="nav-link">Collections</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/services" class="nav-link">Services</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/contact" class="nav-link">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons">
+                    <div class="icon-wrapper">
+                        <a href="/cart" class="icon-link cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search products...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="container">
+            <ol class="breadcrumb" id="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#categories">Collections</a></li>
+                <li class="active" id="breadcrumb-current">Category</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="cat-hero" id="cat-hero">
+        <div class="container" id="hero-content">
+            <!-- skeleton shown until data loads -->
+            <div class="skeleton skel-tag"></div>
+            <div class="skeleton skel-h1"></div>
+            <div class="skeleton skel-h1b"></div>
+            <div class="skeleton skel-p"></div>
+            <div class="skeleton skel-p2"></div>
+        </div>
+    </section>
+
+    <!-- SUBCATEGORY SECTION -->
+    <section class="subcat-section">
+        <div id="subcat-heading-wrap" style="display:none;">
+            <h2 class="subcat-heading">Shop by product type</h2>
+            <p class="subcat-sub" id="subcat-sub-text"></p>
+        </div>
+        <div class="subcat-grid" id="subcat-grid">
+            <!-- skeleton cards -->
+            ${[...Array(6)].join('<div class="subcat-skel">
+                <div class="skeleton subcat-skel-img"></div>
+                <div class="subcat-skel-body">
+                    <div class="skeleton subcat-skel-line"></div>
+                </div>
+            </div>')}
+        </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/+91811512115" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo">
+                    <img src="/icons/logo.png" alt="logo">
+                </span>
+                <p>Trusted home and office furniture since 2010. Crafted with love, delivered with care to homes across
+                    India.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Living Room</a></li>
+                    <li><a href="#">Bedroom</a></li>
+                    <li><a href="#">Dining Room</a></li>
+                    <li><a href="#">Home Office</a></li>
+                    <li><a href="#">Outdoor</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-phone"></i>
+                    +91 8115 112115</p>
+                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div class="policies">
+                <a href="/policies/refund-policy">Refund policy</a>&middot;
+                <a href="/policies/privacy-policy">Privacy policy</a>&middot;
+                <a href="/policies/terms-of-service">Terms of service</a>&middot;
+                <a href="/policies/shipping-policy">Shipping policy</a>
+            </div>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+    <script type="module">
+        import { getCategoryBySlug, resolveThumbnail, getCategoryTree, getAllCategories } from "./category/categoryService.js";
+        import { BASE_URL } from "./config.js";
+
+        const params = new URLSearchParams(location.search);
+        const slug = params.get("slug") || "";
+
+        const heroEl = document.getElementById("hero-content");
+        const grid = document.getElementById("subcat-grid");
+        const headingWrap = document.getElementById("subcat-heading-wrap");
+        const subcatSub = document.getElementById("subcat-sub-text");
+        const bcCurrent = document.getElementById("breadcrumb-current");
+
+        function syncCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+                document.querySelectorAll(".cart-count").forEach(el => {
+                    el.textContent = total;
+                });
+            } catch {
+                // localStorage unavailable — leave badge as-is
+            }
+        }
+
+        /* ─────────────────────────────────────────────
+   1. NAVBAR MEGA MENU
+   Replaces the three static .mega-col divs with
+   dynamic columns built from the category tree.
+───────────────────────────────────────────── */
+        async function buildNavMegaMenu() {
+            const megaGrid = document.querySelector(".mega-grid");
+            if (!megaGrid) return;
+
+            try {
+                const { tree } = await getCategoryTree();
+                if (!tree || tree.length === 0) return; // Keep static HTML as fallback
+
+                // Build one .mega-col per top-level category
+                const cols = tree.map((topCat) => {
+                    const children = topCat.children || [];
+                    const childLinks = children
+                        .map(
+                            (child) =>
+                                `<li>
+                            <a href="/shop?slug=${encodeURIComponent(child.slug)}">
+                                <i class="fas fa-chevron-right"></i>
+                                ${escapeHtml(child.name)}
+                            </a>
+                        </li>`
+                        )
+                        .join("");
+
+                    return `
+                <div class="mega-col">
+                    <h4>
+                        <a href="/category?slug=${encodeURIComponent(topCat.slug)}" class="mega-col-heading-link">
+                            ${escapeHtml(topCat.name)}
+                        </a>
+                    </h4>
+                    <ul class="mega-links">
+                        ${childLinks || `<li><a href="/category?slug=${encodeURIComponent(topCat.slug)}"><i class="fas fa-chevron-right"></i> View All</a></li>`}
+                    </ul>
+                </div>`;
+                });
+
+                megaGrid.innerHTML = cols.join("");
+            } catch (err) {
+                // Silently fall back to the static HTML already in the DOM
+                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+            }
+        }
+
+        function escapeHtml(s) {
+            return String(s ?? "")
+                .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+
+        function renderHero(cat) {
+            document.title = `${cat.name} — Dreak Trading`;
+            bcCurrent.textContent = cat.name;
+            heroEl.innerHTML = `
+                <span class="cat-tag">Collection</span>
+                <h1>${escapeHtml(cat.name)}</h1>
+                ${cat.description ? `<p>${escapeHtml(cat.description)}</p>` : ""}
+            `;
+        }
+
+        function renderSubcats(children) {
+            if (!children || children.length === 0) {
+                grid.innerHTML = `
+                    <div class="state-box">
+                        <i class="fas fa-layer-group"></i>
+                        <p>No subcategories found. <a href="/shop?slug=${encodeURIComponent(slug)}" style="color:var(--primary);">Browse all products →</a></p>
+                    </div>`;
+                return;
+            }
+
+            headingWrap.style.display = "block";
+            subcatSub.textContent = `${children.length} product type${children.length !== 1 ? "s" : ""} available`;
+
+            grid.innerHTML = children.map(child => {
+                const thumbUrl = child.thumbnail ? resolveThumbnail(child.thumbnail) : null;
+                const imgHtml = thumbUrl
+                    ? `<img src="${thumbUrl}" alt="${escapeHtml(child.name)}" loading="lazy" />`
+                    : `<div class="subcat-img-placeholder">🪑</div>`;
+
+                return `
+                    <a class="subcat-card" href="/shop?slug=${encodeURIComponent(child.slug)}" aria-label="Shop ${escapeHtml(child.name)}">
+                        <div class="subcat-img-wrap">${imgHtml}</div>
+                        <div class="subcat-info">
+                            <span class="subcat-name">${escapeHtml(child.name)}</span>
+                            <span class="subcat-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>`;
+            }).join("");
+        }
+
+        function renderError(msg) {
+            heroEl.innerHTML = `<h1 style="color:var(--text-muted);">${escapeHtml(msg)}</h1>`;
+            grid.innerHTML = `
+                <div class="state-box">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Something went wrong. <a href="/" style="color:var(--primary);">Return home →</a></p>
+                </div>`;
+        }
+
+        async function loginSwap() {
+            const userText = document.getElementById("userText")
+            const userTrigger = document.getElementById("userTrigger")
+            const adminPanelLink = document.getElementById("adminPanelLink")
+
+            let isLoggedIn = false
+
+            // check auth from backend
+            try {
+                const res = await fetch(`${BASE_URL}/auth/me`, {
+                    credentials: "include"
+                })
+
+                const data = await res.json()
+                if (data.isLoggedIn) {
+                    isLoggedIn = true,
+                        userText.textContent = "Account"
+
+                    // role check
+                    if (data.user.role === "admin") {
+                        adminPanelLink.style.display = "inline-flex"
+                    }
+
+                } else {
+                    userText.textContent = "Login"
+                }
+            } catch (err) {
+                console.error(err)
+                userText.textContent = "Login"
+            }
+
+            // click behavior
+            userTrigger.addEventListener("click", (e) => {
+                e.stopPropagation()
+
+                if (!isLoggedIn) {
+                    window.location.href = "/auth/signin"
+                } else {
+                    window.location.href = "/account"
+                }
+            })
+
+            adminPanelLink.addEventListener("click", (e) => {
+                e.preventDefault()
+                window.open("/admin/admin-panel", "_blank")
+            })
+        }
+
+        async function buildFooterShopLinks() {
+            // Target the <ul> inside the footer column whose <h4> is "Shop"
+            const footerShopUl = findFooterShopUl();
+            if (!footerShopUl) return;
+
+            try {
+                const { categories } = await getAllCategories();
+                if (!categories || categories.length === 0) return;
+
+                // Only top-level categories (no parent) in footer
+                const topLevel = categories.filter((c) => !c.parent);
+
+                if (topLevel.length === 0) return;
+
+                footerShopUl.innerHTML = topLevel
+                    .map(
+                        (cat) =>
+                            `<li>
+                        <a href="/category?slug=${encodeURIComponent(cat.slug)}">
+                            ${escapeHtml(cat.name)}
+                        </a>
+                    </li>`
+                    )
+                    .join("");
+            } catch (err) {
+                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+            }
+        }
+
+        function findFooterShopUl() {
+            const footerCols = document.querySelectorAll(".footer-col");
+            for (const col of footerCols) {
+                const heading = col.querySelector("h4");
+                if (heading && heading.textContent.trim().toLowerCase() === "shop") {
+                    return col.querySelector("ul");
+                }
+            }
+            return null;
+        }
+
+        // ── Init ────────────────────────────────────────
+        if (!slug) {
+            renderError("No category specified.");
+        } else {
+            getCategoryBySlug(slug)
+                .then(data => {
+                    renderHero(data);
+                    renderSubcats(data.children || []);
+                })
+                .catch(err => {
+                    console.error(err);
+                    renderError("Category not found.");
+                });
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            syncCartBadge()
+            buildNavMegaMenu()
+            loginSwap()
+            buildFooterShopLinks()
+        })
+    </script>
+</body>
+
+</html>

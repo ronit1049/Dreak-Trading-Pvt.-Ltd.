@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recover Password — Dreak Trading Pvt. Ltd.</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="stylesheet" href="/auth.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Password Recovery</h1>
+
+        <p style="text-align:center; margin-bottom:15px; color:#555;">
+            We will send you an email to reset your password
+        </p>
+
+        <div class="input-group">
+            <input type="email" id="recoverEmail" placeholder="Enter your email">
+        </div>
+
+        <button onclick="recoverPassword()">Submit</button>
+
+        <div class="link" style="margin-top:10px;">
+            <a href="/signin" style="font-size:14px;">Cancel</a>
+        </div>
+
+        <p id="recoverMsg" style="margin-top:15px; text-align:center; color:rgb(27, 207, 51); display:none;">
+            We’ve sent you an email with a link to update your password
+        </p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

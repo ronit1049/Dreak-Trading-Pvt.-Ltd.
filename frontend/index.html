@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dreak Trading — Trusted Home & Office Furniture Shop</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="top-wrapper" id="topWrapper">
+        <!-- Announcement Bar -->
+        <div class="announcement-bar">
+            <div class="container">
+                <div class="announcement-left">
+                    <div class="announcement-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Free Shipping on Orders</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-undo-alt"></i>
+                        <span>30-Day Returns</span>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>2-Year Warranty</span>
+                    </div>
+                </div>
+                <div class="announcement-right">
+                    <a href="" id="adminPanelLink" class="announcement-link" style="display: none;" target="_blank">
+                        <i class="fas fa-user-shield"></i> Admin Panel
+                    </a>
+                    <div class="user-menu" id="userMenu">
+                        <div class="user-trigger" id="userTrigger">
+                            <i class="fas fa-user"></i>
+                            <span id="userText">Login</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAV -->
+        <header class="main-header" id="header">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="/icons/logo.png" alt="logo">
+                </a>
+
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <nav class="nav-menu">
+                    <div class="close-menu" id="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-grid">
+                                <div class="mega-col">
+                                    <h4>Living Room</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=sofa"><i class="fas fa-chevron-right"></i> Sofas</a>
+                                        </li>
+                                        <li><a href="/shop?cat=sectional"><i class="fas fa-chevron-right"></i>
+                                                Sectionals</a></li>
+                                        <li><a href="/shop?cat=coffee"><i class="fas fa-chevron-right"></i> Coffee
+                                                Tables</a></li>
+                                        <li><a href="/shop?cat=tv"><i class="fas fa-chevron-right"></i> TV Units</a>
+                                        </li>
+                                        <li><a href="/shop?cat=chair"><i class="fas fa-chevron-right"></i>
+                                                Armchairs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Bedroom</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=bed"><i class="fas fa-chevron-right"></i> Beds</a>
+                                        </li>
+                                        <li><a href="/shop?cat=mattress"><i class="fas fa-chevron-right"></i>
+                                                Mattresses</a></li>
+                                        <li><a href="/shop?cat=wardrobe"><i class="fas fa-chevron-right"></i>
+                                                Wardrobes</a></li>
+                                        <li><a href="/shop?cat=nightstand"><i class="fas fa-chevron-right"></i>
+                                                Nightstands</a></li>
+                                        <li><a href="/shop?cat=dresser"><i class="fas fa-chevron-right"></i>
+                                                Dressers</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-col">
+                                    <h4>Dining</h4>
+                                    <ul class="mega-links">
+                                        <li><a href="/shop?cat=dining-table"><i class="fas fa-chevron-right"></i>
+                                                Dining Tables</a></li>
+                                        <li><a href="/shop?cat=dining-chair"><i class="fas fa-chevron-right"></i>
+                                                Dining Chairs</a></li>
+                                        <li><a href="/shop?cat=buffet"><i class="fas fa-chevron-right"></i>
+                                                Buffets</a></li>
+                                        <li><a href="/shop?cat=bar-stool"><i class="fas fa-chevron-right"></i> Bar
+                                                Stools</a></li>
+                                        <li><a href="/shop?cat=china-cabinet"><i class="fas fa-chevron-right"></i>
+                                                China Cabinets</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-featured">
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Free Shipping on Orders</span>
+                                </div>
+                                <div class="mega-feature-item">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>30-Day Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/#categories" class="nav-link">Collections</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/services" class="nav-link">Services</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/contact" class="nav-link">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons">
+                    <div class="icon-wrapper">
+                        <a href="/cart" class="icon-link cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-slider">
+
+        <div class="slide active">
+            <div class="hero">
+                <div class="hero-text">
+                    <div class="hero-badge">New Collection 2025</div>
+                    <h1>Craft Your <em>Perfect</em><br>Living Space</h1>
+                    <p>Discover timeless furniture designed for comfort and elegance.</p>
+                    <div class="hero-btns">
+                        <a href="#products" class="btn-primary">Explore →</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="hero">
+                <div class="hero-text">
+                    <div class="hero-badge">Modern Design</div>
+                    <h1>Upgrade Your <em>Workspace</em></h1>
+                    <p>Ergonomic furniture for productivity & comfort.</p>
+                    <div class="hero-btns">
+                        <a href="#products" class="btn-primary">Shop Office →</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="hero">
+                <div class="hero-text">
+                    <div class="hero-badge">Limited Offer</div>
+                    <h1>Luxury <em>Dining</em> Collection</h1>
+                    <p>Bring elegance to your dining experience.</p>
+                    <div class="hero-btns">
+                        <a href="#products" class="btn-primary">Explore Dining →</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=800&q=80">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="slider-controls">
+            <button id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-inner">
+            <span>Premium Quality</span><span>Free Delivery</span><span>Custom Orders</span>
+            <span>2-Year Warranty</span><span>100% Handcrafted</span><span>Eco-Friendly Materials</span>
+            <span>Premium Quality</span><span>Free Delivery</span><span>Custom Orders</span>
+            <span>5-Year Warranty</span><span>100% Handcrafted</span><span>Eco-Friendly Materials</span>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+        <div class="section-header fade-up">
+            <div class="section-tag">Browse by Room</div>
+            <h2 class="section-title">Shop by Category</h2>
+            <p class="section-sub">Find exactly what you need for every room in your home.</p>
+        </div>
+        <div class="categories-grid fade-up">
+            <div class="cat-card"><span class="cat-icon">🛋️</span>
+                <div class="cat-name">Living Room</div>
+                <div class="cat-count">84 Items</div>
+            </div>
+            <div class="cat-card"><span class="cat-icon">🛏️</span>
+                <div class="cat-name">Bedroom</div>
+                <div class="cat-count">63 Items</div>
+            </div>
+            <div class="cat-card"><span class="cat-icon">🍽️</span>
+                <div class="cat-name">Dining Room</div>
+                <div class="cat-count">47 Items</div>
+            </div>
+            <div class="cat-card"><span class="cat-icon">💼</span>
+                <div class="cat-name">Home Office</div>
+                <div class="cat-count">56 Items</div>
+            </div>
+            <div class="cat-card"><span class="cat-icon">🪴</span>
+                <div class="cat-name">Outdoor</div>
+                <div class="cat-count">38 Items</div>
+            </div>
+            <div class="cat-card"><span class="cat-icon">🪞</span>
+                <div class="cat-name">Decor & Accents</div>
+                <div class="cat-count">120 Items</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section products" id="products">
+        <div class="section-header fade-up">
+            <div class="section-tag">Curated Picks</div>
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-sub">Handpicked pieces loved by our customers.</p>
+        </div>
+        <div class="filter-tabs fade-up">
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="about">
+        <div class="section-header fade-up">
+            <div class="section-tag">Why Choose Us</div>
+            <h2 class="section-title">Promise From Us</h2>
+            <p class="section-sub">We stand behind every piece we sell with quality and care.</p>
+        </div>
+        <div class="features-grid fade-up">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-crown me-2" style="color: var(--primary)"></i></div>
+                <div class="feature-title">Premium Materials</div>
+                <div class="feature-desc">Solid hardwood, premium fabrics, and sustainable materials sourced
+                    responsibly.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-truck" style="color: var(--primary);"></i></div>
+                <div class="feature-title">Free White-Glove Delivery</div>
+                <div class="feature-desc">Assembly and placement included. We bring your furniture to its perfect spot.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt" style="color: var(--primary);"></i></div>
+                <div class="feature-title">2-Year Warranty</div>
+                <div class="feature-desc">Every product is covered. If something breaks, we fix or replace it. Simple.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-reply" style="color: var(--primary);"></i></div>
+                <div class="feature-title">Easy 30-Day Returns</div>
+                <div class="feature-desc">Not satisfied? We'll pick it up and give you a full refund, no questions
+                    asked.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER -->
+    <div class="banner fade-up">
+        <div class="banner-text">
+            <div class="banner-tag">Limited Time Offer</div>
+            <h2 class="banner-title">Up to <em>40% Off</em> on Office Furniture Sets</h2>
+            <p class="banner-desc">Upgrade your workspace with our ergonomic office collection. Comfort meets
+                productivity
+                in every piece.</p>
+            <a href="#products" class="btn-light">Shop the Sale →</a>
+        </div>
+        <div class="banner-img">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80"
+                alt="Office Furniture Sale" />
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-header fade-up">
+            <div class="section-tag">Customer Love</div>
+            <h2 class="section-title">What People Say</h2>
+        </div>
+        <div class="testimonials-grid fade-up">
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"The sofa we ordered is absolutely stunning. The quality is exceptional and it
+                    arrived
+                    perfectly assembled. Our living room has never looked better!"</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">👩</div>
+                    <div>
+                        <div class="testi-name">Priya Sharma</div>
+                        <div class="testi-role">Interior Designer, Mumbai</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"Furnished our entire office with Dreak Trading. The team was professional,
+                    delivery
+                    was on
+                    time, and the furniture is built to last. Highly recommend!"</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">👨</div>
+                    <div>
+                        <div class="testi-name">Arjun Mehta</div>
+                        <div class="testi-role">Startup Founder, Bangalore</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"I love the dining table we got! The craftsmanship is beautiful and it's become
+                    the
+                    centerpiece of our home. Worth every rupee and more."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">👩</div>
+                    <div>
+                        <div class="testi-name">Kavya Nair</div>
+                        <div class="testi-role">Homeowner, Chennai</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section" id="contact">
+        <div class="newsletter-box fade-up">
+            <h2>Stay in the Loop</h2>
+            <p>Get first access to new arrivals, exclusive deals, and interior inspiration delivered to your inbox.</p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="Enter your email address" required />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/+91811512115" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo">
+                    <img src="/icons/logo.png" alt="">
+                </span>
+                <p>Trusted home and office furniture since 2010. Crafted with love, delivered with care to homes across
+                    India.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Living Room</a></li>
+                    <li><a href="#">Bedroom</a></li>
+                    <li><a href="#">Dining Room</a></li>
+                    <li><a href="#">Home Office</a></li>
+                    <li><a href="#">Outdoor</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-phone"></i>
+                    +91 8115 112115</p>
+                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div class="policies">
+                <a href="/policies/refund-policy">Refund policy</a>&middot;
+                <a href="/policies/privacy-policy">Privacy policy</a>&middot;
+                <a href="/policies/terms-of-service">Terms of service</a>&middot;
+                <a href="/policies/shipping-policy">Shipping policy</a>
+            </div>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">🛒 Added to cart!</div>
+
+    <!-- MOBILE BOTTOM BAR -->
+    <div class="mobile-bottom-bar">
+
+        <a href="#" class="mobile-item" id="mobileLogin">
+            <i class="fas fa-user"></i>
+            <span>Login</span>
+        </a>
+
+        <a href="/cart" class="mobile-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+        </a>
+
+        <div class="mobile-item" id="mobileSearchBtn">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </div>
+
+    </div>
+    
+    <script src="/script.js"></script>
+    <script type="module" src="/category/categories.js"></script>
+    <script type="module" src="/category/homepage.js"></script>
+</body>
+
+</html>
