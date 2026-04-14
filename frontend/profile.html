@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account — Dreak Trading Pvt. Ltd.</title>
+    <title>My Profile — Dreak Trading Pvt. Ltd.</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,84 +15,266 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        .account-container {
+        .profile-container {
             min-height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            padding: 60px 5%;
-            flex-wrap: wrap;
+            padding-top: 60px;
         }
 
-        /* CARD STYLE (same design language as homepage) */
-        .account-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            width: 280px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
+        .mp-wrap {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
         }
 
-        .account-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        /* HEADINGS (match homepage style) */
-        .account-card h2 {
+        .mp-page-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-        }
-
-        /* ICON STYLE */
-        .account-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            /* font-size: 25px; */
+            font-weight: 700;
             color: var(--primary-dark);
+            margin: 0 0 2rem;
         }
 
-        /* BUTTONS (reuse system) */
-        .account-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
+        .mp-section {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mp-section-title {
+            font-size: 15px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0 0 1.25rem;
         }
 
-        /* PRIMARY BUTTON (Logout) */
-        .logout-btn {
+        .mp-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .mp-field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .mp-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .mp-label {
+            font-size: 15px;
+            color: var(--primary-dark)
+        }
+
+        .mp-input {
+            font-size: 14px;
+            padding: 8px 10px;
+            color: var(--dark);
+            border: 0.5px solid var(--dark);
+            outline: none;
+            transition: border-color 0.15s;
+            border-radius: 5px;
+        }
+
+        .mp-input:focus {
+            color: var(--text-muted)
+        }
+
+        .mp-input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .mp-addr-form {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            display: none;
+        }
+
+        .mp-addr-form.open {
+            display: block;
+        }
+
+        .mp-addr-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .mp-addr-row.three {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .mp-addr-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mp-addr-card {
+            padding: 10px 0;
+            font-size: 13px;
+            color: var(--primary-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .mp-addr-card-text {
+            line-height: 1.6;
+        }
+
+        .mp-addr-default {
+            font-size: 14px;
+            font-weight: 400;
+            color: #4ac54a;
+            padding: 2px 0;
+            border-radius: 999px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .mp-remove-btn {
+            font-size: 12px;
+            color: #fff;
+            background: rgb(245, 55, 55);
+            border: 1px solid rgb(245, 55, 55);
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 4px 8px;
+            flex-shrink: 0;
+        }
+
+        .mp-add-btn {
+            font-size: 13px;
+            color: #fff;
+            background-color: var(--primary-dark);
+            border: none;
+            border-radius: 5px;
+            padding: 6px 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Jost', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mp-add-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .mp-save-addr-btn {
+            color: #fff;
+            background-color: var(--primary-dark);
+            font-size: 13px;
+            border-radius: 5px;
+            padding: 7px 16px;
+            cursor: pointer;
+            margin-right: 8px;
+            border: none;
+            font-family: 'Jost', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mp-save-addr-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .mp-cancel-btn {
+            font-size: 13px;
+            border: 1px solid var(--primary-dark);
+            cursor: pointer;
+            color: var(--primary-dark);
+            padding: 7px 8px;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mp-cancel-btn:hover {
             background: var(--primary-dark);
             color: #fff;
-            font-family: 'Jost', sans-serif;
+            transform: translateY(-2px) scale(1.02);
         }
 
-        /* SECONDARY BUTTON */
-        .order-btn {
-            background-color: var(--primary-dark);
+        .mp-update-btn {
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            padding: 10px 28px;
+            cursor: pointer;
+            margin: 0.5rem 0;
             color: #fff;
+            background-color: var(--primary-dark);
+            border-radius: 5px;
             font-family: 'Jost', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
         }
 
-        .profile-btn {
-            background-color: var(--primary-dark);
-            color: #fff;
-            font-family: 'Jost', sans-serif;
+        .mp-update-btn:hover {
+            opacity: 0.85;
         }
-        
+
+        .mp-update-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .mp-feedback {
+            text-align: center;
+            margin: 7px 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .mp-feedback.success {
+            color: #4ac54a;
+        }
+
+        .mp-feedback.error {
+            color: rgb(245, 55, 55);
+        }
+
+        .mp-loader {
+            font-size: 13px;
+            color: var(--primary);
+            padding: 1rem 0;
+        }
+
+        .mp-checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--primary-dark);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 520px) {
+
+            .mp-row,
+            .mp-addr-row,
+            .mp-addr-row.three {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
-
     <div class="top-wrapper" id="topWrapper">
         <!-- Announcement Bar -->
         <div class="announcement-bar">
@@ -235,41 +417,94 @@
         </header>
     </div>
 
-    <!-- Account Content -->
-    <div class="account-container">
+    <!-- Profile content -->
+    <div class="profile-container">
+        <div class="mp-wrap">
+            <h1 class="mp-page-title">Manage Profile</h1>
 
-        <div class="account-card">
-            <div class="account-icon">
-                <i class="fas fa-user"></i>
+            <div id="mp-loader" class="mp-loader">Loading your information...</div>
+
+            <div id="mp-content" style="display:none;">
+                <!-- Basic Info -->
+                <div class="mp-section">
+                    <p class="mp-section-title">Basic info</p>
+                    <div class="mp-row">
+                        <div class="mp-field">
+                            <label class="mp-label" for="mp-fname">First Name</label>
+                            <input class="mp-input" type="text" id="mp-fname" placeholder="First name" />
+                        </div>
+                        <div class="mp-field">
+                            <label class="mp-label" for="mp-lname">Last Name</label>
+                            <input class="mp-input" type="text" id="mp-lname" placeholder="Last name" />
+                        </div>
+                    </div>
+                    <div class="mp-field">
+                        <label class="mp-label" for="mp-phone">Phone Number</label>
+                        <input class="mp-input" type="tel" id="mp-phone" placeholder="10-digit mobile number"
+                            maxlength="10" />
+                    </div>
+                    <div class="mp-field">
+                        <label class="mp-label" for="mp-email">Email Address</label>
+                        <input class="mp-input" type="email" id="mp-email" placeholder="Email" />
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="mp-section">
+                    <p class="mp-section-title">Addresses</p>
+
+                    <div id="mp-addr-list" class="mp-addr-list"></div>
+
+                    <button class="mp-add-btn" id="mp-add-addr-btn" style="margin-top: 1rem;">
+                        + Add new address
+                    </button>
+
+                    <div class="mp-addr-form" id="mp-addr-form">
+                        <div class="mp-addr-row">
+                            <div class="mp-field">
+                                <label class="mp-label">Line 1</label>
+                                <input class="mp-input" id="af-line1" placeholder="House / flat / block no." />
+                            </div>
+                            <div class="mp-field">
+                                <label class="mp-label">Line 2</label>
+                                <input class="mp-input" id="af-line2" placeholder="Street / area (optional)" />
+                            </div>
+                        </div>
+                        <div class="mp-addr-row three">
+                            <div class="mp-field">
+                                <label class="mp-label">City</label>
+                                <input class="mp-input" id="af-city" placeholder="City" />
+                            </div>
+                            <div class="mp-field">
+                                <label class="mp-label">State</label>
+                                <input class="mp-input" id="af-state" placeholder="State" />
+                            </div>
+                            <div class="mp-field">
+                                <label class="mp-label">Pincode</label>
+                                <input class="mp-input" id="af-pincode" placeholder="6-digit pincode" maxlength="6" />
+                            </div>
+                        </div>
+                        <div class="mp-field">
+                            <label class="mp-label">Country</label>
+                            <input class="mp-input" id="af-country" value="India" />
+                        </div>
+                        <div class="mp-checkbox-row">
+                            <input type="checkbox" id="af-default" />
+                            <label for="af-default">Set as default address</label>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="mp-save-addr-btn" id="mp-save-addr-btn">Save Address</button>
+                            <button class="mp-cancel-btn" id="mp-cancel-addr-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mp-update-btn" id="mp-update-btn">Update Profile</button>
+                <p class="mp-feedback" id="mp-feedback"></p>
             </div>
-            <h2>My Account</h2>
-            <button id="logoutBtn" class="account-btn logout-btn">
-                Logout
-            </button>
         </div>
-
-        <div class="account-card">
-            <div class="account-icon">
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-            <h2>Order History</h2>
-            <button id="orderBtn" class="account-btn order-btn">
-                My Orders
-            </button>
-        </div>
-
-        <div class="account-card">
-            <div class="account-icon">
-                <i class="fas fa-user"></i>
-            </div>
-            <h2>Manage Account</h2>
-            <button id="profileBtn" class="account-btn profile-btn">
-                My Profile
-            </button>
-        </div>
-
     </div>
-    
+
     <!-- WHATSAPP -->
     <a href="https://wa.me/+91811512115" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
@@ -350,38 +585,11 @@
     <div class="toast" id="toast">🛒 Added to cart!</div>
 
     <script src="/script.js"></script>
-    <!-- Page Script -->
+
+    <!-- page script -->
     <script type="module">
-        import { BASE_URL } from "./config.js";
+        import { BASE_URL } from "./config.js"
         import { getCategoryTree, getAllCategories } from "./category/categoryService.js";
-
-        document.getElementById("logoutBtn").addEventListener("click", async () => {
-            try {
-                const res = await fetch(`${BASE_URL}/auth/sign-out`, {
-                    method: "POST",
-                    credentials: "include"
-                });
-
-                const data = await res.json();
-
-                if (res.ok) {
-                    window.location.href = "/";
-                } else {
-                    alert(data.message);
-                }
-            } catch (err) {
-                console.error(err);
-                alert("Logout failed");
-            }
-        });
-
-        document.getElementById("orderBtn").addEventListener("click", () => {
-            window.location.href = "/orders";
-        });
-
-        document.getElementById("profileBtn").addEventListener("click", () => {
-            window.location.href = "/profile"
-        })
 
         // cart
         function syncCartBadge() {
@@ -454,7 +662,7 @@
 
             // check auth from backend
             try {
-                const res = await fetch(`${BASE_URL}/auth/me`, {
+                const res = await fetch("http://localhost:8000/auth/me", {
                     credentials: "include"
                 })
 
@@ -539,8 +747,169 @@
             loginSwap()
             buildFooterShopLinks()
         })
-    </script>
 
+
+        // ----------- PROFILE PAGE JS ----------- //
+        let addresses = [];
+
+        async function loadProfile() {
+            try {
+                const res = await fetch(`${BASE_URL}/auth/my-profile`, { credentials: "include" });
+                if (res.status === 401) {
+                    window.location.href = "/auth/signin";
+                    return;
+                }
+                const data = await res.json();
+                if (!data.success) throw new Error(data.message);
+
+                const u = data.data;
+                document.getElementById("mp-fname").value = u.firstName || "";
+                document.getElementById("mp-lname").value = u.lastName || "";
+                document.getElementById("mp-phone").value = u.phone || "";
+                document.getElementById("mp-email").value = u.email || "";
+
+                addresses = (u.addresses || []).map((a, i) => ({ ...a, _key: i }));
+                renderAddresses();
+
+                document.getElementById("mp-loader").style.display = "none";
+                document.getElementById("mp-content").style.display = "block";
+            } catch (err) {
+                document.getElementById("mp-loader").textContent = "Failed to load profile. Please refresh.";
+            }
+        }
+
+        function renderAddresses() {
+            const list = document.getElementById("mp-addr-list");
+            if (addresses.length === 0) {
+                list.innerHTML = `<p style="font-size:13px; color:var(--color-text-secondary); margin:0;">No saved addresses yet.</p>`;
+                return;
+            }
+            list.innerHTML = addresses.map((a, i) => `
+    <div class="mp-addr-card">
+      <div class="mp-addr-card-text">
+        ${[a.line1, a.line2, a.city, a.state, a.pincode, a.country].filter(Boolean).join(", ")}
+        ${a.isDefault ? `<br><span class="mp-addr-default">Default</span>` : ""}
+      </div>
+      <button class="mp-remove-btn" onclick="removeAddress(${i})">Remove</button>
+    </div>
+  `).join("");
+        }
+
+        function removeAddress(i) {
+            addresses.splice(i, 1);
+            renderAddresses();
+        }
+
+        document.getElementById("mp-add-addr-btn").addEventListener("click", () => {
+            document.getElementById("mp-addr-form").classList.toggle("open");
+            document.getElementById("mp-add-addr-btn").style.display = "none";
+        });
+
+        document.getElementById("mp-cancel-addr-btn").addEventListener("click", () => {
+            document.getElementById("mp-addr-form").classList.remove("open");
+            document.getElementById("mp-add-addr-btn").style.display = "inline-flex";
+            clearAddrForm();
+        });
+
+        document.getElementById("mp-save-addr-btn").addEventListener("click", () => {
+            const line1 = document.getElementById("af-line1").value.trim();
+            const city = document.getElementById("af-city").value.trim();
+            const state = document.getElementById("af-state").value.trim();
+            const pincode = document.getElementById("af-pincode").value.trim();
+
+            if (!line1 || !city || !state || !pincode) {
+                setFeedback("Please fill in Line 1, City, State, and Pincode for the address.", "error");
+                return;
+            }
+            if (!/^[0-9]{6}$/.test(pincode)) {
+                setFeedback("Pincode must be 6 digits.", "error");
+                return;
+            }
+
+            const isDefault = document.getElementById("af-default").checked;
+            if (isDefault) addresses = addresses.map(a => ({ ...a, isDefault: false }));
+
+            addresses.push({
+                line1,
+                line2: document.getElementById("af-line2").value.trim(),
+                city,
+                state,
+                pincode,
+                country: document.getElementById("af-country").value.trim() || "India",
+                isDefault,
+                _key: Date.now()
+            });
+
+            renderAddresses();
+            document.getElementById("mp-addr-form").classList.remove("open");
+            document.getElementById("mp-add-addr-btn").style.display = "inline-flex";
+            clearAddrForm();
+            setFeedback("", "");
+        });
+
+        function clearAddrForm() {
+            ["af-line1", "af-line2", "af-city", "af-state", "af-pincode"].forEach(id => document.getElementById(id).value = "");
+            document.getElementById("af-country").value = "India";
+            document.getElementById("af-default").checked = false;
+        }
+
+        document.getElementById("mp-update-btn").addEventListener("click", async () => {
+            const btn = document.getElementById("mp-update-btn");
+            const firstName = document.getElementById("mp-fname").value.trim();
+            const lastName = document.getElementById("mp-lname").value.trim();
+            const phone = document.getElementById("mp-phone").value.trim();
+            const email = document.getElementById("mp-email").value.trim();
+
+            if (!firstName || !lastName || !email) {
+                setFeedback("First name, last name, and email are required.", "error");
+                return;
+            }
+            if (phone && !/^[0-9]{10}$/.test(phone)) {
+                setFeedback("Phone number must be exactly 10 digits.", "error");
+                return;
+            }
+
+            const payload = {
+                firstName,
+                lastName,
+                email,
+                ...(phone ? { phone } : {}),
+                addresses: addresses.map(({ _key, ...rest }) => rest)
+            };
+
+            btn.disabled = true;
+            btn.textContent = "Updating...";
+            setFeedback("", "");
+
+            try {
+                const res = await fetch(`${BASE_URL}/auth/update-profile`, {
+                    method: "PATCH",
+                    credentials: "include",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    setFeedback("Profile updated successfully.", "success");
+                } else {
+                    setFeedback(data.message || "Update failed. Please try again.", "error");
+                }
+            } catch {
+                setFeedback("Network error. Please check your connection.", "error");
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Update profile";
+            }
+        });
+
+        function setFeedback(msg, type) {
+            const el = document.getElementById("mp-feedback");
+            el.textContent = msg;
+            el.className = "mp-feedback" + (type ? " " + type : "");
+        }
+
+        loadProfile();
+    </script>
 </body>
 
 </html>

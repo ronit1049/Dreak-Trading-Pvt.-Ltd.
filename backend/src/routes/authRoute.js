@@ -1,5 +1,5 @@
 import express from "express"
-import { customerSignUp, customerSignIn, customerLogout, resetPassword, forgotPassword, checkAuth, getMyProfile } from "../controller/auth-controller/user.js"
+import { customerSignUp, customerSignIn, customerLogout, resetPassword, forgotPassword, checkAuth, getMyProfile, updateMyProfile } from "../controller/auth-controller/user.js"
 import { adminSignUp } from "../controller/auth-controller/admin.js"
 import { verifyAdmin, verifyCustomer } from "../middleware/authorization.js"
 
@@ -13,6 +13,7 @@ authRouter.post("/recover", forgotPassword)
 authRouter.post("/reset", resetPassword)
 authRouter.get("/me", checkAuth)
 authRouter.get("/my-profile", verifyCustomer, getMyProfile)
+authRouter.patch("/update-profile", verifyCustomer, updateMyProfile)
 
 // admin routes
 authRouter.post("/admin-sign-up", verifyAdmin, adminSignUp)

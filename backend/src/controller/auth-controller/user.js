@@ -301,6 +301,87 @@ export const getMyProfile = async (req, res) => {
     }
 }
 
+export const updateMyProfile = async (req, res) => {
+    try {
+        const userId = req.user?._id
+        if (!userId) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized access"
+            })
+        }
+
+        const { firstName, lastName, phone, email, addresses } = req.body
+
+        // validate email format if being updated
+        if (email && !validator.isEmail(email)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid email format"
+            })
+        }
+
+        // validate phone format if being updated
+        if (phone && !/^[0-9]{10}$/.test(phone)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid phone number"
+            })
+        }
+
+        // check if new email is already taken by another user
+        if (email) {
+            const emailTaken = await User.findOne({ email, _id: { $ne: userId } })
+            if (emailTaken) {
+                return res.status(409).json({
+                    success: false,
+                    message: "Email is already in use"
+                })
+            }
+        }
+
+        // Build the update object with only the field that were sent
+        const updateFields = {}
+        if (firstName) updateFields.firstName = firstName.trim()
+        if (lastName) updateFields.lastName = lastName.trim()
+        if (phone) updateFields.phone = phone
+        if (email) updateFields.email = email.toLowerCase().trim()
+        if (addresses) updateFields.addresses = addresses
+
+        if (Object.keys(updateFields).length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "No fields provided to update"
+            })
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $set: updateFields },
+            { new: true, runValidators: true }
+        ).select("firstName lastName email phone addresses")
+
+        if (!updatedUser) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Profile updated successfully",
+            data: updatedUser
+        })
+    } catch (err) {
+        console.error(err)
+        res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        })
+    }
+}
+
 
 /*-------No need of account delete functionality for now-------*/
 
