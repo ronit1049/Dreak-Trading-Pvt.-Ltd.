@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services — Dreak Trading Pvt. Ltd.</title>
+    <title>Services — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,106 +14,115 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <style>
-        body {
-            font-family: 'Jost', sans-serif;
-            margin: 0;
-            background: #faf8f4;
-        }
-
-        /* HERO */
+        /* ===== HERO ===== */
         .services-hero {
-            padding: 140px 5% 80px;
+            padding: 140px 5% 90px;
             text-align: center;
             position: relative;
-            color: #fff;
             overflow: hidden;
         }
 
-        /* BACKGROUND IMAGE */
         .services-hero::before {
             content: "";
             position: absolute;
             inset: 0;
             background: url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80") center/cover no-repeat;
+            filter: brightness(0.4);
             z-index: -2;
         }
 
-        /* DARK OVERLAY */
         .services-hero::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: radial-gradient(circle at center, rgba(226, 161, 45, 0.08), transparent 60%);
             z-index: -1;
         }
 
         .services-hero h1 {
             font-size: 48px;
             font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 10px;
         }
 
         .services-hero p {
-            font-size: 16px;
-            opacity: 0.9;
+            color: var(--text-on-dark-2);
+            margin-top: 10px;
         }
 
-        /* SERVICES */
+        /* ===== SERVICES GRID ===== */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
             padding: 60px 5%;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            border-radius: 20px;
             padding: 30px 25px;
-            border-radius: 16px;
             text-align: center;
-            transition: 0.4s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid rgba(226, 161, 45, 0.08);
+            pointer-events: none;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--black-border-hover);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 24px rgba(226, 161, 45, 0.08);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            color: var(--gold-dark);
+            margin-bottom: 14px;
         }
 
         .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
             margin-bottom: 10px;
-            font-size: 20px;
         }
 
         .service-card p {
-            color: #666;
+            color: var(--text-on-dark-2);
             font-size: 14px;
         }
 
-        /* BOOKING */
+        /* ===== BOOKING SECTION ===== */
         .booking {
             padding: 80px 5%;
-            background: #faf8f4;
         }
 
         .booking h1 {
+            text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 30px;
-            color: var(--primary-dark);
+            margin-bottom: 40px;
         }
 
+        /* FORM */
         .booking form {
             max-width: 600px;
             margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            background: #fff;
+            gap: 14px;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
             padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         /* INPUTS */
@@ -121,50 +130,52 @@
         .booking select,
         .booking textarea {
             padding: 14px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            font-size: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--black-border);
+            background: var(--black-soft);
+            color: var(--text-on-dark);
             outline: none;
-            transition: 0.3s;
             font-family: 'Jost', sans-serif;
-            color: var(--primary-dark);
+            transition: 0.3s;
+        }
+
+        .booking input::placeholder,
+        .booking textarea::placeholder {
+            color: var(--text-on-dark-3);
         }
 
         .booking input:focus,
         .booking select:focus,
         .booking textarea:focus {
-            border-color: var(--primary-dark);
-            box-shadow: 0 0 0 2px rgba(212, 113, 58, 0.1);
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 0 2px rgba(226, 161, 45, 0.15);
         }
 
         /* BUTTON */
         .booking button {
-            padding: 14px;
-            background: var(--primary-dark);
-            color: #fff;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-muted));
+            color: var(--black);
             border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 400;
+            letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 30px;
-            font-size: 15px;
             transition: 0.3s;
             font-family: 'Jost', sans-serif;
         }
 
         .booking button:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(226, 161, 45, 0.4);
         }
 
-        .service-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
+        /* ===== ANIMATION FIX ===== */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: 0.6s ease;
+            transition: 0.7s ease;
         }
 
         .fade-up.show {
@@ -196,7 +207,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -362,26 +373,22 @@
     <section class="booking fade-up">
         <h1 style="text-align:center;">Book a Service</h1>
 
-        <form onsubmit="bookService(event)">
-
-            <input type="text" placeholder="Full Name" required>
-
-            <input type="email" placeholder="Email Address" required>
-
-            <input type="tel" placeholder="Phone Number" required>
-
-            <select required>
+        <form id="serviceForm">
+            <input type="text" name="fullName" placeholder="Full Name" required>
+            <input type="email" name="emailAddress" placeholder="Email Address" required>
+            <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
+            <select name="service" required>
                 <option value="">Select Service</option>
-                <option>Custom Furniture</option>
-                <option>Interior Consultation</option>
-                <option>Bulk Orders</option>
-                <option>Installation Support</option>
+                <option value="Custom Furniture">Custom Furniture</option>
+                <option value="Interior Consultation">Interior Consultation</option>
+                <option value="Bulk Orders">Bulk Orders</option>
+                <option value="Installation Support">Installation Support</option>
             </select>
-
-            <textarea placeholder="Describe your requirement..." rows="4"></textarea>
-
-            <button type="submit">Book Now</button>
-
+            <textarea name="requirement" placeholder="Describe your requirement..." rows="4" required></textarea>
+            <button type="submit" id="submitBtn">Book Now</button>
+            <div id="formStatus"
+                style="margin-top: 15px; padding: 10px; border-radius: 8px; display: none; font-size: 14px; text-align: center;">
+            </div>
         </form>
     </section>
 
@@ -439,18 +446,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
                 <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -461,19 +469,8 @@
         </div>
     </footer>
 
-    <script>
-        // BOOK SERVICE FUNCTION
-        function bookService(e) {
-            e.preventDefault();
-
-            alert("✅ Service booked successfully! Our team will contact you.");
-
-            e.target.reset();
-        }
-    </script>
-
     <script type="module">
-        import {BASE_URL} from "./config.js";
+        import { BASE_URL } from "./config.js";
         import { getCategoryTree, getAllCategories } from "./category/categoryService.js";
 
         const faders = document.querySelectorAll(".fade-up");
@@ -481,7 +478,7 @@
         // cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -531,7 +528,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -613,7 +610,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 
@@ -644,6 +641,79 @@
         faders.forEach(el => {
             observer.observe(el);
         });
+
+        document.getElementById('serviceForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const btn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('formStatus');
+
+            // 1. Prepare Data
+            const formData = new FormData(form);
+            const data = {
+                fullName: formData.get('fullName'),
+                emailAddress: formData.get('emailAddress'),
+                phoneNumber: formData.get('phoneNumber'),
+                service: formData.get('service'),
+                requirement: formData.get('requirement')
+            };
+
+            // 2. UI Loading State
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+            statusDiv.style.display = "none";
+
+            try {
+                const response = await fetch(`${BASE_URL}/mail/serviceEmail`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Success
+                    showToast(statusDiv, result.message || "Request sent successfully!", "success");
+                    form.reset();
+                } else {
+                    // Backend Error (400, 500)
+                    showToast(statusDiv, result.message || "Something went wrong.", "error");
+                }
+            } catch (error) {
+                // Network Error
+                showToast(statusDiv, "Unable to connect to server.", "error");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Book Now";
+            }
+        });
+
+        /**
+         * Simple Helper to show status colors
+         */
+        function showToast(element, message, type) {
+            element.textContent = message;
+            element.style.display = "block";
+
+            if (type === "success") {
+                element.style.background = "rgba(40, 167, 69, 0.2)";
+                element.style.color = "#28a745";
+                element.style.border = "1px solid #28a745";
+            } else {
+                element.style.background = "rgba(220, 53, 69, 0.2)";
+                element.style.color = "#dc3545";
+                element.style.border = "1px solid #dc3545";
+            }
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                element.style.display = "none";
+            }, 5000);
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
             syncCartBadge()

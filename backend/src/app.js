@@ -6,6 +6,7 @@ import categoryRouter from "./routes/categoryRoute.js"
 import productRouter from "./routes/productRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 import paymentRouter from "./routes/paymentRoute.js"
+import emailRouter from "./email/email.js"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import path from "path"
@@ -29,5 +30,6 @@ app.use("/category", categoryRouter)
 app.use("/product", productRouter)
 app.use("/payment", paymentRouter)
 app.use("/order", orderRouter)
+app.use("/mail", emailRouter)
 
 export default app

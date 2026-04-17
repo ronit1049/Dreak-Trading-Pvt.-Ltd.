@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Category — Dreak Trading Pvt. Ltd.</title>
+    <title>Category — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,43 +14,30 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <style>
-        /* ── Reset & Base ─────────────────────────────── */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --clr-bg: #faf9f7;
-            --clr-accent-lt: #f3ead8;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Jost', sans-serif;
-            --radius-md: 12px;
-            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.10);
-            --transition: 0.22s ease;
-            --max-w: 1240px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: var(--font-body);
-            background: var(--clr-bg);
-            color: var(--dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Jost', sans-serif;
+            background: var(--black-rich);
+            color: var(--text-on-dark);
         }
 
         /* ── Breadcrumb ──────────────────────────────── */
         .breadcrumb-bar {
-            background: #fff;
-            border-bottom: 1px solid var(--border-light);
+            background: var(--black-soft);
+            border-bottom: 1px solid var(--black-border);
             padding: 12px 0;
+        }
+
+        .breadcrumb li a {
+            color: var(--gold-dark);
+            text-decoration: none;
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--gold-light);
+        }
+
+        .breadcrumb li.active {
+            color: var(--text-on-dark);
         }
 
         .breadcrumb-bar .container {
@@ -69,17 +56,6 @@
             margin-top: 20px;
         }
 
-        .breadcrumb li a {
-            color: var(--primary-dark);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        .breadcrumb li.active {
-            color: rgba(117, 149, 179, 0.514);
-            font-weight: 500;
-        }
-
         .breadcrumb li:not(:last-child)::after {
             content: "/";
             margin-left: 6px;
@@ -88,8 +64,8 @@
 
         /* ── Category Hero ───────────────────────────── */
         .cat-hero {
-            background: #fff;
-            border-bottom: 1px solid var(--border-light);
+            background: var(--black);
+            border-bottom: 1px solid var(--black-border);
             padding: 56px 0 48px;
         }
 
@@ -101,20 +77,21 @@
 
         .cat-tag {
             display: inline-block;
-            font-size: 0.72rem;
+            background: transparent;
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-dark);
+            font-size: 11px;
             font-weight: 500;
-            letter-spacing: 0.1em;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--primary-dark);
-            background: rgba(117, 149, 179, 0.514);
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 16px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 22px;
         }
 
         .cat-hero h1 {
-            font-family: var(--font-display);
-            color: var(--primary-dark);
+            color: var(--text-on-dark);
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 600;
             line-height: 1.15;
@@ -125,7 +102,7 @@
 
         .cat-hero p {
             font-size: 1rem;
-            color: var(--text-muted);
+            color: var(--text-on-dark-2);
             max-width: 560px;
             line-height: 1.7;
         }
@@ -183,15 +160,16 @@
             max-width: var(--max-w);
             margin: 0 auto;
             padding: 56px 24px 80px;
+            background: var(--black-rich);
         }
 
         .subcat-heading {
-            font-family: var(--font-display);
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.4rem, 3vw, 1.9rem);
             font-weight: 600;
             margin-bottom: 8px;
             letter-spacing: -0.3px;
-            color: var(--primary-dark);
+            color: var(--text-on-dark);
         }
 
         .subcat-sub {
@@ -212,17 +190,19 @@
             display: block;
             text-decoration: none;
             color: var(--primary-dark);
-            background: #fff;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
             overflow: hidden;
-            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            border-radius: 20px;
+            transition: all 0.35s ease;
         }
 
         .subcat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
+            transform: translateY(-6px);
+            border-color: var(--black-border-hover);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(226, 161, 45, 0.08);
         }
 
         .subcat-card:hover .subcat-arrow {
@@ -233,7 +213,8 @@
         .subcat-img-wrap {
             aspect-ratio: 4/3;
             overflow: hidden;
-            background: var(--light-gray);
+            background: #111;
+            border-bottom: 1px solid var(--black-border);
             position: relative;
         }
 
@@ -241,13 +222,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
             display: block;
+            filter: brightness(0.9);
+            transition: transform 0.5s ease, filter 0.3s;
         }
 
-        .subcat-card:hover .subcat-img-wrap img {
-            transform: scale(1.05);
+        .subcat-card:hover img {
+            transform: scale(1.06);
+            filter: brightness(1);
         }
+
 
         .subcat-img-placeholder {
             width: 100%;
@@ -256,7 +240,8 @@
             align-items: center;
             justify-content: center;
             font-size: 2.4rem;
-            background: var(--clr-accent-lt);
+            background: rgba(226, 161, 45, 0.06);
+            color: var(--gold-dark);
         }
 
         .subcat-info {
@@ -267,6 +252,7 @@
         }
 
         .subcat-name {
+            color: var(--text-on-dark);
             font-weight: 500;
             font-size: 0.95rem;
             line-height: 1.3;
@@ -276,23 +262,28 @@
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: var(--primary);
-            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.65rem;
             flex-shrink: 0;
+            background: var(--gold-dark);
+            color: var(--black);
             opacity: 0;
             transform: translateX(-6px);
-            transition: opacity var(--transition), transform var(--transition);
+            transition: all 0.3s ease;
+        }
+
+        .subcat-card:hover .subcat-arrow {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* ── Skeleton cards ───────────────────────────── */
         .subcat-skel {
-            border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid var(--border-light);
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
         }
 
         .subcat-skel-img {
@@ -313,7 +304,7 @@
             grid-column: 1 / -1;
             text-align: center;
             padding: 64px 24px;
-            color: var(--text-muted);
+            color: var(--text-on-dark-2);
         }
 
         .state-box i {
@@ -321,17 +312,28 @@
             margin-bottom: 12px;
             display: block;
             opacity: 0.4;
+            color: var(--gold-dark);
+            opacity: 0.5;
         }
 
         .state-box p {
             font-size: 0.95rem;
         }
 
+        /* ── Hover Links ───────────────── */
+        .state-box a {
+            color: var(--gold-dark);
+        }
+
+        .state-box a:hover {
+            color: var(--gold-light);
+        }
+
         /* ── Responsive ───────────────────────────────── */
         @media (max-width: 600px) {
             .subcat-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 14px;
             }
 
             .cat-hero {
@@ -367,7 +369,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -586,19 +588,18 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
-                <p><i class="fas fa-phone"></i>
-                    +91 8115 112115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal - 741103<br>India</p>
+                <p><i class="fas fa-phone"></i> +91 81151 12115</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -626,7 +627,7 @@
 
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -680,7 +681,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -690,7 +691,7 @@
         }
 
         function renderHero(cat) {
-            document.title = `${cat.name} — Dreak Trading`;
+            document.title = `${cat.name} — Liventra Furniture & Decor`;
             bcCurrent.textContent = cat.name;
             heroEl.innerHTML = `
                 <span class="cat-tag">Collection</span>
@@ -811,7 +812,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 

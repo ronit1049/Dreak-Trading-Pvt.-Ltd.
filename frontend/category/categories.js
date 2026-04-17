@@ -59,7 +59,7 @@ async function buildNavMegaMenu() {
         megaGrid.innerHTML = cols.join("");
     } catch (err) {
         // Silently fall back to the static HTML already in the DOM
-        console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+        console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
     }
 }
 
@@ -118,7 +118,7 @@ async function buildCategorySection() {
             })
             .join("");
     } catch (err) {
-        console.warn("[Dreak Trading] Featured categories unavailable, using static fallback.", err);
+        console.warn("[Liventra] Featured categories unavailable, using static fallback.", err);
         grid.innerHTML = buildStaticCategoryFallback();
     }
 }
@@ -163,7 +163,7 @@ async function buildFooterShopLinks() {
             )
             .join("");
     } catch (err) {
-        console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+        console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
     }
 }
 

@@ -5,6 +5,11 @@ import User from "../../schema/user-schema.js"
 import redisClient from "../../config/redis.js"
 import razorpay from "../../config/razorpay.js"
 import PDFDocument from "pdfkit"
+import path from "path"
+import { fileURLToPath } from "url"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const generateOrderNumber = () => {
     const ts = Date.now().toString(36).toUpperCase()
@@ -330,7 +335,10 @@ export const generateInvoice = async (req, res) => {
             return res.status(404).json({ message: "Order not found" })
         }
 
-        const doc = new PDFDocument()
+        const doc = new PDFDocument({ margin: 50 })
+
+        doc.font(path.join(__dirname, "../../../fonts/NotoSans_Condensed-Black.ttf"))
+
         res.setHeader("Content-Type", "application/pdf")
         res.setHeader(
             "Content-Disposition",
@@ -339,25 +347,76 @@ export const generateInvoice = async (req, res) => {
 
         doc.pipe(res)
 
-        doc.fontSize(18).text("Invoice", { align: "center" })
+        // ===== HEADER =====
+        doc
+            .fontSize(20)
+            .text("INVOICE", { align: "right" })
+
+        doc
+            .fontSize(10)
+            .text(`Order #: ${order.orderNumber}`, { align: "right" })
+            .text(`Date: ${new Date(order.createdAt).toDateString()}`, { align: "right" })
+
         doc.moveDown()
 
-        doc.fontSize(12).text(`Order: ${order.orderNumber}`)
-        doc.text(`Date: ${order.createdAt.toDateString()}`)
-        doc.text(`Customer: ${order.customerSnapshot.name}`)
-        doc.text(`Email: ${order.customerSnapshot.email}`)
-        doc.moveDown()
+        // ===== CUSTOMER INFO =====
+        doc
+            .fontSize(12)
+            .text("Billed To:", { underline: true })
 
-        doc.text("Items:")
+        doc
+            .fontSize(10)
+            .text(order.customerSnapshot.name)
+            .text(order.customerSnapshot.email)
+
+        doc.moveDown(2)
+
+        // ===== TABLE HEADER =====
+        const tableTop = doc.y
+
+        const col1 = 50
+        const col2 = 230
+        const col3 = 350
+        const col4 = 420
+        const col5 = 490
+
+        doc
+            .fontSize(11)
+            .text("Item", col1, tableTop)
+            .text("SKU", col2, tableTop)
+            .text("Qty", col3, tableTop)
+            .text("Price", col4, tableTop)
+            .text("Total", col5, tableTop)
+
+        doc.moveTo(50, tableTop + 15).lineTo(550, tableTop + 15).stroke()
+
+        // ===== TABLE ROWS =====
+        let y = tableTop + 25
+
         order.items.forEach((item) => {
-            doc.text(`${item.productName} (${item.variant.sku}) x ${item.quantity} = ₹${item.totalPrice}`)
+            doc
+                .fontSize(10)
+                .text(item.productName, col1, y)
+                .text(item.variant.sku, col2, y, { width: 100 })
+                .text(item.quantity, col3, y)
+                .text(`₹${item.price}`, col4, y)
+                .text(`₹${item.totalPrice}`, col5, y)
+
+            y += 20
         })
 
-        doc.moveDown()
-        doc.text(`Subtotal: ₹${order.subtotal}`)
-        doc.text(`Shipping: ₹${order.shippingCharge}`)
-        doc.text(`Tax: ₹${order.taxAmount}`)
-        doc.text(`Total: ₹${order.totalAmount}`)
+        doc.moveDown(2)
+
+        // ===== TOTALS =====
+        const summaryTop = y + 20
+
+        doc.text(`Subtotal: ₹${order.subtotal}`, 400, summaryTop)
+        doc.text(`Shipping: ₹${order.shippingCharge}`, 400, summaryTop + 15)
+        doc.text(`Tax: ₹${order.taxAmount}`, 400, summaryTop + 30)
+
+        doc
+            .fontSize(12)
+            .text(`Total: ₹${order.totalAmount}`, 400, summaryTop + 50)
 
         doc.end()
     } catch (err) {
@@ -365,7 +424,6 @@ export const generateInvoice = async (req, res) => {
         res.status(err.statusCode || 500).json({
             success: false,
             message: err.message || "Server error",
-            field: "name"
         })
     }
 }

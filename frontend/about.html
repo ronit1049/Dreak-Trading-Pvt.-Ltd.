@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — Dreak Trading Pvt. Ltd.</title>
+    <title>About Us — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +15,11 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        body {
-            font-family: 'Jost', sans-serif;
-            margin: 0;
-            background: #faf8f4;
-        }
-
         /* HERO */
         .about-hero {
             padding: 140px 5% 80px;
             text-align: center;
             position: relative;
-            color: #fff;
             overflow: hidden;
         }
 
@@ -36,6 +29,7 @@
             position: absolute;
             inset: 0;
             background: url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80") center/cover no-repeat;
+            filter: brightness(0.4);
             z-index: -2;
         }
 
@@ -44,28 +38,42 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: radial-gradient(circle at center, rgba(226, 161, 45, 0.08), transparent 60%);
             z-index: -1;
         }
 
         .about-hero h1 {
             font-size: 48px;
             font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 10px;
         }
 
         .about-hero p {
-            max-width: 600px;
-            margin: auto;
+            max-width: 650px;
+            margin: 15px auto 0;
+            font-size: 16px;
+            line-height: 1.6;
             opacity: 0.9;
+            color: var(--text-on-dark-2);
         }
 
         /* SECTION */
         .about-section {
-            padding: 60px 5% 60px;
+            padding: 60px 5%;
             max-width: 1100px;
             margin: auto;
+            background: var(--black-rich);
         }
 
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-dark);
+            font-size: 36px;
+        }
+
+        /* GRID */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -76,17 +84,24 @@
         .about-grid img {
             width: 100%;
             border-radius: 15px;
+            transition: transform 0.4s ease;
         }
 
-        .about-text h1 {
+        .about-grid img:hover {
+            transform: scale(1.03);
+        }
+
+        /* TEXT */
+        .about-text h2 {
             font-family: 'Cormorant Garamond', serif;
             margin-bottom: 15px;
             color: var(--primary-dark);
         }
 
         .about-text p {
-            color: #555;
-            line-height: 1.6;
+            color: var(--text-on-dark-2);
+            line-height: 1.8;
+            font-size: 15.5px;
         }
 
         /* CARDS */
@@ -98,10 +113,13 @@
         }
 
         .card {
-            background: #fff;
+            background: var(--black-card);
+            backdrop-filter: blur(12px);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 20px;
             text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--black-border);
         }
 
         .card h3 {
@@ -109,12 +127,27 @@
         }
 
         .card p {
-            color: #555;
+            color: var(--text-on-dark-2);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid rgba(226, 161, 45, 0.08);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--black-border-hover);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 24px rgba(226, 161, 45, 0.08);
         }
 
         /* PROCESS */
         .process {
-            background: #fff;
+            background: var(--black-rich);
             padding: 60px 5%;
         }
 
@@ -126,70 +159,44 @@
         }
 
         .step {
-            background: #f5f0e8;
-            padding: 20px;
-            border-radius: 12px;
+            background: var(--black-card);
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--black-border);
         }
 
         .step h4 {
             margin-bottom: 10px;
         }
 
-        /* IMAGE HOVER EFFECT */
-        .about-grid img {
-            width: 100%;
-            border-radius: 15px;
-            transition: 0.4s;
-        }
-
-        .about-grid img:hover {
-            transform: scale(1.05);
-        }
-
-        /* GLASS CARD EFFECT */
-        .card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 16px;
-            text-align: center;
-            transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        /* PROCESS STEPS HOVER */
-        .step {
-            background: #f5f0e8;
-            padding: 20px;
-            border-radius: 12px;
-            transition: 0.3s;
+        .step p {
+            color: var(--text-on-dark-2);
         }
 
         .step:hover {
-            background: #fff;
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            border-color: var(--black-border-hover);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 24px rgba(226, 161, 45, 0.08);
         }
 
-        .step p {
-            color: #555;
+        /* MISSION */
+        .mission {
+            padding: 0 5% 30px;
         }
 
-        /* TEXT IMPROVEMENT */
-        .about-text p {
-            line-height: 1.7;
+        /* UX IMPROVEMENTS */
+        .user-trigger {
+            cursor: pointer;
         }
 
-        /* FADE ANIMATION */
+        /* ===== ANIMATION FIX ===== */
         .fade-up {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: 0.7s ease;
         }
 
         .fade-up.show {
@@ -197,8 +204,23 @@
             transform: translateY(0);
         }
 
-        .mission {
-            padding: 0 5% 30px;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 34px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero {
+                padding: 120px 5% 60px;
+            }
         }
     </style>
 
@@ -225,7 +247,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -247,7 +269,7 @@
             <div class="container">
                 <a href="/" class="logo">
                     <img src="/icons/logo.png" alt="logo">
-                </span></a>
+                    </span></a>
 
                 <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
@@ -354,19 +376,20 @@
 
     <!-- HERO -->
     <section class="about-hero fade-up">
-        <h1>About Dreak Trading</h1>
+        <h1>About Liventra</h1>
         <p>Crafting beautiful furniture that turns houses into homes. Trusted by thousands across India.</p>
     </section>
 
     <!-- COMPANY STORY -->
     <section class="about-section fade-up">
         <div class="about-grid">
-            <img src="https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=800&q=80">
+            <img src="https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=800&q=80" alt="Furniture workshop"
+                loading="lazy">
 
             <div class="about-text">
                 <h1>Our Story</h1>
                 <p>
-                    Founded in "Year", Dreak Trading began as a small workshop with a big dream — to create furniture that
+                    Liventra Furniture & Decor began as a small workshop with a big dream — to create furniture that
                     blends comfort, elegance, and durability.
                     Today, we serve thousands of homes and offices with thoughtfully designed products.
                 </p>
@@ -393,7 +416,9 @@
 
     <!-- MANUFACTURING PROCESS -->
     <section class="process fade-up">
-        <h1 style="text-align:center; margin-bottom:30px; font-family: 'Cormorant Garamond', serif; color: var(--primary-dark);">Our Manufacturing Process</h1>
+        <h1
+            style="text-align:center; margin-bottom:30px; font-family: 'Cormorant Garamond', serif; color: var(--primary-dark);">
+            Our Manufacturing Process</h1>
 
         <div class="process-steps">
 
@@ -432,7 +457,8 @@
                 </p>
             </div>
 
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+                alt="Quality furniture inspection" loading="lazy">
 
         </div>
     </section>
@@ -491,18 +517,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
-                <p><i class="fas fa-phone"></i>+91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
+                <p><i class="fas fa-phone"></i> +91 81151 12115</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -526,7 +553,7 @@
         // cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -576,7 +603,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -658,7 +685,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 

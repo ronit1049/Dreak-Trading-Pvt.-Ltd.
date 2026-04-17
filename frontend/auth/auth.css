@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@300;400;500;600&display=swap');
 
 /* RESET */
 * {
@@ -8,37 +8,81 @@
   font-family: 'Jost', sans-serif;
 }
 
-/* BODY (same feel as other pages) */
+/* BODY: Deep Obsidian Background */
 body {
-  background: #faf8f4;
+  /* A deep radial gradient: 
+     Center: #1a150e (Very dark charcoal with a hint of gold/brown)
+     Edges:  #0a0a0a (Your brand's deep black) */
+  background: radial-gradient(circle at center, #1a150e 0%, #0a0a0a 100%);
+  background-attachment: fixed;
+  /* Ensures the glow stays centered while scrolling */
+
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
-/* CONTAINER */
+/* Remove the old background image/overlays from your previous code */
+body::before,
+body::after {
+  display: none;
+}
+
+/* CONTAINER: The "Black Card" Look */
 .container {
-  background: #fff;
-  padding: 35px;
-  border-radius: 16px;
+  background: #161616;
+  /* --black-card */
+  padding: 45px 35px;
+  border-radius: 20px;
   width: 100%;
-  max-width: 420px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  max-width: 400px;
+  border: 1px solid rgba(226, 161, 45, 0.18);
+  /* --black-border */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
 }
 
-/* TITLE */
+/* Elegant Top Glow Line */
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e2a12d, transparent);
+  /* --gold-dark */
+}
+
+.container:hover {
+  border-color: rgba(226, 161, 45, 0.45);
+  /* --black-border-hover */
+  transform: translateY(-5px);
+}
+
+/* TITLE: Gold Display Serif */
 h1 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   font-family: 'Cormorant Garamond', serif;
-  color: #173054;
+  font-size: 2.2rem;
+  color: #f5f0e4;
+  /* --text-on-dark */
+  letter-spacing: 1px;
+}
+
+.company_name {
+  font-size: 13px;
+  color: #e2a12d;
 }
 
 /* INPUT GROUP */
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .input-row {
@@ -46,91 +90,110 @@ h1 {
   gap: 10px;
 }
 
-/* INPUT */
+/* INPUT: Dark & Minimal */
 input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  padding: 14px 18px;
+  background: #1a1a1a;
+  /* --black-soft */
+  border: 1px solid rgba(226, 161, 45, 0.18);
+  /* --black-border */
+  border-radius: 12px;
   outline: none;
-  font-size: 14px;
-  transition: 0.3s;
-  color: #173054;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  color: #f5f0e4;
+  /* --text-on-dark */
+}
+
+input::placeholder {
+  color: #7a6a52;
+  /* --text-on-dark-3 */
 }
 
 input:focus {
-  border-color: #173054;
-  box-shadow: 0 0 0 2px rgba(212,113,58,0.1);
+  border-color: #e2a12d;
+  /* --gold-dark */
+  background: #111111;
+  /* --black-rich */
+  box-shadow: 0 0 0 3px rgba(226, 161, 45, 0.15);
+  /* --gold-glow */
 }
 
-/* BUTTON (same as your site) */
+/* BUTTON: Premium Gold */
 button {
   width: 100%;
-  padding: 12px;
-  background: #173054;
-  color: white;
+  padding: 14px;
+  background: #e2a12d;
+  /* --gold-dark */
+  color: #0a0a0a;
+  /* --black */
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 15px;
-  transition: 0.3s;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
+  background: #fcde70;
+  /* --gold-light */
   transform: translateY(-2px);
-}
-
-/* LINKS */
-.link {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.link a {
-  color: #173054;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.link a:hover {
-  text-decoration: underline;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* FORGOT PASSWORD */
 .forgot {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .forgot a {
   font-size: 13px;
-  color: #888;
+  color: #b8a98c;
+  /* --text-on-dark-2 */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot a:hover {
+  color: #e2a12d;
+}
+
+/* SECONDARY LINKS */
+.link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #b8a98c;
+  /* --text-on-dark-2 */
+}
+
+.link a {
+  color: #e2a12d;
+  /* --gold-dark */
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 5px;
+  transition: 0.3s;
+}
+
+.link a:hover {
+  text-decoration: underline;
+  color: #fcde70;
 }
 
 /* RESPONSIVE */
-@media (max-width: 500px) {
+@media (max-width: 450px) {
   .container {
-    margin: 10px;
-    padding: 25px;
+    padding: 35px 25px;
   }
 
-  .input-row {
-    flex-direction: column;
+  h1 {
+    font-size: 1.8rem;
   }
-}
-
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80") center/cover no-repeat;
-  z-index:-2;
-}
-
-body::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  z-index:-1;
 }

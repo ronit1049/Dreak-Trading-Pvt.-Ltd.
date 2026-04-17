@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — Dreak Trading Pvt. Ltd.</title>
+    <title>Contact Us — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Jost', sans-serif;
-            margin: 0;
-            background: #faf8f4;
-        }
-
         /* HERO */
         .contact-hero {
             padding: 140px 5% 80px;
             text-align: center;
             position: relative;
-            color: #fff;
             overflow: hidden;
         }
 
@@ -36,6 +29,7 @@
             position: absolute;
             inset: 0;
             background: url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80") center/cover no-repeat;
+            filter: brightness(0.4);
             z-index: -2;
         }
 
@@ -44,7 +38,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: radial-gradient(circle at center, rgba(226, 161, 45, 0.08), transparent 60%);
             z-index: -1;
         }
 
@@ -55,8 +49,12 @@
         }
 
         .contact-hero p {
+            max-width: 650px;
+            margin: 15px auto 0;
             font-size: 16px;
+            line-height: 1.6;
             opacity: 0.9;
+            color: var(--text-on-dark-2);
         }
 
         /* GRID */
@@ -69,15 +67,17 @@
 
         /* FORM */
         .contact-form {
-            background: #fff;
+            background: var(--black-card);
+            backdrop-filter: blur(12px);
             padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--black-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         .contact-form h2 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--primary-dark);
             font-size: 30px;
         }
 
@@ -90,49 +90,59 @@
             width: 100%;
             padding: 14px;
             margin-bottom: 15px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
+            border-radius: 12px;
+            border: 1px solid var(--black-border);
+            background: var(--black-soft);
+            color: var(--text-on-dark);
             font-size: 14px;
             outline: none;
             transition: 0.3s;
             font-family: 'Jost', sans-serif;
-            color: var(--primary-dark);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form input::placeholder {
+            color: var(--text-on-dark-3);
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: var(--primary-dark);
-            box-shadow: 0 0 0 2px rgba(212, 113, 58, 0.1);
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 0 2px rgba(226, 161, 45, 0.15);
         }
 
         .contact-form button {
-            padding: 14px;
-            background: var(--primary-dark);
-            color: #fff;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-muted));
+            color: var(--black);
             border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 400;
+            letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 30px;
-            font-size: 15px;
             transition: 0.3s;
             font-family: 'Jost', sans-serif;
         }
 
         .contact-form button:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(226, 161, 45, 0.4);
         }
 
         /* INFO */
         .contact-info {
-            background: #fff;
+            background: var(--black-card);
+            backdrop-filter: blur(12px);
             padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--black-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         .contact-info h2 {
             font-family: "Cormorant Garamond", serif;
-            color: var(--primary-dark);
             font-size: 30px;
             margin-bottom: 15px;
         }
@@ -140,6 +150,11 @@
         .contact-info p {
             margin: 12px 0;
             font-size: 14px;
+            color: var(--text-on-dark-2);
+        }
+
+        .contact-info p i {
+            color: var(--gold-dark);
         }
 
         /* MAP */
@@ -175,7 +190,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -315,30 +330,36 @@
         <div class="contact-form">
             <h2>Contact Us</h2>
 
-            <form onsubmit="sendMessage(event)">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" name="message" rows="5" required></textarea>
+                <button type="submit" id="submitBtn">Send Message</button>
+                <div id="formStatus"
+                    style="margin-top: 15px; padding: 10px; border-radius: 8px; display: none; font-size: 14px; text-align: center;">
+                </div>
             </form>
         </div>
 
         <!-- INFO -->
         <div class="contact-info">
             <h2>Contact Info</h2>
+            <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                741103<br>India</p>
             <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-            <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
-            <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+            <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
 
             <!-- GOOGLE MAP -->
-            <iframe class="map" src="https://www.google.com/maps?q=Kolkata&output=embed">
-            </iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.130090056497!2d88.50615947408865!3d23.419667401395408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f921e95ebbdd2f%3A0x7488a79e7f23deae!2sGhurni%20azad%20hind%20sarak!5e0!3m2!1sen!2sin!4v1776318145001!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
     </section>
 
     <!-- WHATSAPP -->
-    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp">
+    <a href="https://wa.me/+91 8115112115" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -391,18 +412,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
                 <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -421,7 +443,7 @@
         // cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -471,7 +493,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -553,7 +575,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 
@@ -568,12 +590,78 @@
             return null;
         }
 
-        function sendMessage(e) {
-            e.preventDefault();
-            alert("✅ Message sent successfully!");
-            e.target.reset();
+        document.getElementById("contactForm").addEventListener('submit',
+            async function (e) {
+                e.preventDefault()
+
+                const form = e.target
+                const btn = document.getElementById('submitBtn')
+                const statusDiv = document.getElementById('formStatus')
+
+                // 1. Prepare Data
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                };
+
+                // 2. UI Loading State
+                btn.disabled = true;
+                btn.innerText = "Sending...";
+                statusDiv.style.display = "none";
+
+                try {
+                    const response = await fetch(`${BASE_URL}/mail/contactEmail`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        // Success
+                        showToast(statusDiv, result.message || "Request sent successfully!", "success");
+                        form.reset();
+                    } else {
+                        // Backend Error (400, 500)
+                        showToast(statusDiv, result.message || "Something went wrong.", "error");
+                    }
+                } catch (err) {
+                    showToast(statusDiv, "Unable to connect to server.", "error");
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = "Book Now";
+                }
+            }
+        )
+
+        /**
+         * Simple Helper to show status colors
+         */
+        function showToast(element, message, type) {
+            element.textContent = message;
+            element.style.display = "block";
+
+            if (type === "success") {
+                element.style.background = "rgba(40, 167, 69, 0.2)";
+                element.style.color = "#28a745";
+                element.style.border = "1px solid #28a745";
+            } else {
+                element.style.background = "rgba(220, 53, 69, 0.2)";
+                element.style.color = "#dc3545";
+                element.style.border = "1px solid #dc3545";
+            }
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                element.style.display = "none";
+            }, 5000);
         }
-        
+
         document.addEventListener("DOMContentLoaded", () => {
             syncCartBadge()
             buildNavMegaMenu()

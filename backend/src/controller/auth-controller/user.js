@@ -135,12 +135,12 @@ export const forgotPassword = async (req, res) => {
 
         // email template
         const html = `
-            <h2>Dreak Trading Pvt. Ltd.</h2>
+            <h2>Liventra Furniture & Decor</h2>
 
             <p>Reset your password</p>
             <p>Click the button below to reset your password. If you didn't request this, ignore this email.</p>
 
-            <a href="${resetURL}" style="display:inline-block;padding:10px 20px;background: #173054;color:white;text-decoration:none;border-radius:5px;">Reset Your Password</a>
+            <a href="${resetURL}" style="display:inline-block;padding:10px 20px;background: #e2a12d;color:black;text-decoration:none;border-radius:5px;">Reset Your Password</a>
             <p>This link will expire in 15 minutes</p>
         `
 

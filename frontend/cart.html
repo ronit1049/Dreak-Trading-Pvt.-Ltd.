@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Cart — Dreak Trading Pvt. Ltd.</title>
+    <title>Your Cart — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,20 +23,6 @@
             padding: 0;
         }
 
-        :root {
-            --clr-bg: #faf9f7;
-            --clr-text: #1a1814;
-            --clr-accent: #b5813e;
-            --clr-accent-lt: #f3ead8;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Jost', sans-serif;
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --transition: 0.2s ease;
-            --max-w: 1000px;
-            --clr-success: #1fac49;
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -44,6 +30,7 @@
         body {
             font-family: var(--font-body);
             background: var(--warm-white);
+            color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
@@ -76,7 +63,7 @@
             font-weight: 600;
             letter-spacing: -0.4px;
             line-height: 1.1;
-            color: var(--primary-dark);
+            color: var(--primary);
         }
 
         .cart-item-count {
@@ -95,13 +82,14 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: rgba(117, 149, 179, 0.514);
+            background: var(--black-soft);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
             font-size: 1.8rem;
-            color: var(--primary-dark);
+            color: var(--primary);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .cart-empty h2 {
@@ -122,13 +110,18 @@
             align-items: center;
             gap: 8px;
             padding: 13px 28px;
-            background: var(--primary-dark);
-            color: #fff;
+            background: var(--primary);
+            color: var(--text-on-light);
             border-radius: var(--radius-sm);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: background var(--transition);
+            transition: var(--transition);
+        }
+
+        .btn-start-shopping:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 0 12px var(--gold-glow);
         }
 
         /* ── Cart table ───────────────────────────────── */
@@ -136,7 +129,7 @@
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             overflow: hidden;
-            background: #fff;
+            background: var(--black-card);
             margin-bottom: 24px;
         }
 
@@ -144,9 +137,8 @@
         .cart-table-head {
             display: grid;
             grid-template-columns: 1fr 140px 130px 48px;
-            gap: 0;
             padding: 12px 20px;
-            background: rgba(117, 149, 179, 0.514);
+            background: var(--black-soft);
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -155,14 +147,11 @@
             font-weight: 500;
             letter-spacing: 0.07em;
             text-transform: uppercase;
-            color: var(--primary-dark);
+            color: var(--text-muted-gold);
         }
 
         .cart-table-head span:nth-child(2),
-        .cart-table-head span:nth-child(3) {
-            text-align: center;
-        }
-
+        .cart-table-head span:nth-child(3),
         .cart-table-head span:last-child {
             text-align: center;
         }
@@ -171,11 +160,10 @@
         .cart-row {
             display: grid;
             grid-template-columns: 1fr 140px 130px 48px;
-            gap: 0;
             align-items: center;
             padding: 18px 20px;
             border-bottom: 1px solid var(--border-light);
-            transition: background var(--transition);
+            transition: var(--transition);
         }
 
         .cart-row:last-child {
@@ -183,7 +171,7 @@
         }
 
         .cart-row:hover {
-            background: #fdfcfb;
+            background: var(--black-soft);
         }
 
         /* Product cell */
@@ -201,20 +189,21 @@
             object-fit: cover;
             flex-shrink: 0;
             border: 1px solid var(--border-light);
-            background: var(--light-gray);
+            background: var(--black-rich);
         }
 
         .cart-product-img-ph {
             width: 72px;
             height: 72px;
             border-radius: var(--radius-sm);
-            background: var(--clr-accent-lt);
+            background: var(--black-soft);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             border: 1px solid var(--border-light);
+            color: var(--primary);
         }
 
         .cart-product-details {
@@ -226,7 +215,6 @@
             font-weight: 500;
             line-height: 1.35;
             margin-bottom: 4px;
-            /* truncate gracefully */
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -234,12 +222,12 @@
         }
 
         .cart-product-name a {
-            color: inherit;
+            color: var(--text-primary);
             text-decoration: none;
         }
 
         .cart-product-name a:hover {
-            color: var(--clr-accent);
+            color: var(--primary-link);
         }
 
         .cart-product-meta {
@@ -251,13 +239,13 @@
         .cart-meta-tag {
             font-size: 0.72rem;
             color: var(--text-muted);
-            background: var(--light-gray);
+            background: var(--black-soft);
             padding: 2px 8px;
             border-radius: 20px;
             border: 1px solid var(--border-light);
         }
 
-        /* Quantity cell */
+        /* Quantity */
         .cart-qty-cell {
             display: flex;
             justify-content: center;
@@ -269,7 +257,7 @@
             border: 1px solid var(--border-light);
             border-radius: var(--radius-sm);
             overflow: hidden;
-            background: var(--clr-bg);
+            background: var(--black-rich);
         }
 
         .qty-btn {
@@ -279,22 +267,19 @@
             background: transparent;
             font-size: 1rem;
             cursor: pointer;
-            color: var(--clr-text);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background var(--transition);
-            line-height: 1;
-            flex-shrink: 0;
+            transition: var(--transition);
         }
 
         .qty-btn:hover:not(:disabled) {
-            background: var(--light-gray)
+            background: var(--black-soft);
         }
 
         .qty-btn:disabled {
-            color: #ccc;
-            cursor: not-allowed;
+            color: var(--text-on-dark-3);
         }
 
         .qty-value {
@@ -310,7 +295,7 @@
             justify-content: center;
         }
 
-        /* Price cell */
+        /* Price */
         .cart-price-cell {
             text-align: center;
             font-family: var(--font-display);
@@ -318,7 +303,7 @@
             font-weight: 600;
         }
 
-        /* Remove cell */
+        /* Remove */
         .cart-remove-cell {
             display: flex;
             justify-content: center;
@@ -329,39 +314,25 @@
             height: 32px;
             border-radius: 50%;
             border: 1px solid var(--border-light);
-            background: #fff;
+            background: var(--black-rich);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
             color: var(--text-muted);
-            transition: all var(--transition);
+            transition: var(--transition);
         }
 
         .btn-remove:hover {
-            background: #fee;
+            background: rgba(255, 0, 0, 0.08);
             border-color: rgb(243, 77, 77);
             color: rgb(243, 77, 77);
         }
 
-        /* Row remove animation */
-        .cart-row.removing {
-            animation: row-out 0.3s ease forwards;
-        }
-
-        @keyframes row-out {
-            to {
-                opacity: 0;
-                transform: translateX(16px);
-                max-height: 0;
-                padding: 0 20px;
-            }
-        }
-
         /* ── Order summary ────────────────────────────── */
         .order-summary {
-            background: #fff;
+            background: var(--black-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             padding: 24px;
@@ -374,7 +345,7 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--primary-dark);
+            color: var(--text-muted-gold);
             margin-bottom: 16px;
         }
 
@@ -389,20 +360,17 @@
         .summary-row.total-row {
             border-top: 1px solid var(--border-light);
             padding-top: 16px;
-            margin-top: 4px;
-            margin-bottom: 4px;
         }
 
         .summary-row.total-row .summary-label {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
+            color: var(--text-primary);
         }
 
         .summary-row.total-row .summary-value {
             font-family: var(--font-display);
             font-size: 1.5rem;
             font-weight: 600;
+            color: var(--primary);
         }
 
         .summary-label {
@@ -413,24 +381,7 @@
             font-weight: 500;
         }
 
-        .summary-note {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            margin-top: 12px;
-        }
-
-        .summary-note a {
-            color: var(--primary-dark);
-            text-decoration: none;
-        }
-
-        .summary-note a:hover {
-            text-decoration: underline;
-        }
-
-        /* Checkout button */
+        /* Checkout */
         .btn-checkout {
             display: flex;
             align-items: center;
@@ -438,45 +389,39 @@
             gap: 10px;
             width: 100%;
             padding: 15px;
-            background: var(--primary-dark);
-            color: #fff;
+            background: var(--gold-dark);
+            text-decoration: none;
+            color: var(--text-on-light);
             border: none;
             border-radius: var(--radius-sm);
-            font-family: var(--font-body);
             font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            text-decoration: none;
-            transition: opacity var(--transition);
-            margin-bottom: 14px;
+            transition: var(--transition);
+            margin-top: 10px;
         }
 
         .btn-checkout:hover {
-            opacity: 0.88;
-            background: var(--primary);
+            background: var(--gold-light);
+            box-shadow: 0 0 15px var(--gold-glow);
             transform: translateY(-2px);
         }
 
-        /* Continue shopping link */
+        /* Continue */
         .continue-shopping {
+            margin-top: 10px;
             display: block;
             text-align: center;
             font-size: 0.83rem;
             color: var(--text-muted);
             text-decoration: none;
-            transition: color var(--transition);
         }
 
         .continue-shopping:hover {
-            color: var(--primary-dark);
+            color: var(--primary);
         }
 
-        .continue-shopping i {
-            margin-right: 4px;
-            font-size: 0.75rem;
-        }
-
-        /* ── Mobile: card layout under 640px ─────────── */
+        /* ── Mobile ─────────────────────────── */
         @media (max-width: 640px) {
             .cart-table-head {
                 display: none;
@@ -490,53 +435,20 @@
 
             .cart-row {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto;
                 gap: 14px;
                 padding: 18px 16px;
                 position: relative;
             }
 
-            /* Product takes full width */
-            .cart-product {
-                grid-column: 1;
-            }
-
-            /* Qty and price side by side */
-            .cart-qty-cell {
-                justify-content: flex-start;
-                grid-column: 1;
-            }
-
-            .cart-price-cell {
-                text-align: left;
-                grid-column: 1;
-            }
-
-            /* Remove floated top-right */
             .cart-remove-cell {
                 position: absolute;
                 top: 18px;
                 right: 16px;
             }
 
-            /* Show inline labels on mobile */
-            .cart-qty-cell::before {
-                content: "Qty: ";
-                font-size: 0.78rem;
-                color: var(--text-muted);
-                margin-right: 8px;
-                display: flex;
-                align-items: center;
-            }
-
+            .cart-qty-cell::before,
             .cart-price-cell::before {
-                content: "Price: ";
-                font-size: 0.78rem;
                 color: var(--text-muted);
-                margin-right: 4px;
-                font-family: var(--font-body);
-                font-size: 0.82rem;
-                font-weight: 400;
             }
 
             .order-summary {
@@ -576,7 +488,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -770,18 +682,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
                 <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -797,7 +710,7 @@
         import { getCategoryTree, getAllCategories } from "./category/categoryService.js";
 
         /* ─── Constants ──────────────────────────────── */
-        const CART_KEY = "dreak_cart";
+        const CART_KEY = "liventra_cart";
 
         /* ─── Helpers ────────────────────────────────── */
         function escapeHtml(s) {
@@ -826,6 +739,42 @@
             saveCart(cart);
         }
 
+        // Scroll to top
+        const backToTop = document.getElementById("backToTop");
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Show / Hide scroll buttons
+        const scrollUpBtn = document.getElementById("backToTop");
+        const scrollDownBtn = document.getElementById("scrollDown");
+
+        window.addEventListener("scroll", () => {
+
+            const scrollTop = window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            // Show UP button when user scrolls down
+            if (scrollTop > 200) {
+                scrollUpBtn.classList.add("show");
+            } else {
+                scrollUpBtn.classList.remove("show");
+            }
+
+            // Hide DOWN button at bottom
+            if (scrollTop + windowHeight >= pageHeight - 10) {
+                scrollDownBtn.style.display = "none";
+            } else {
+                scrollDownBtn.style.display = "flex";
+            }
+
+        });
+
         function updateQty(sku, delta) {
             const cart = getCart();
             const item = cart.find(i => i.sku === sku);
@@ -837,7 +786,7 @@
         // Cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -887,7 +836,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -964,7 +913,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 
@@ -1094,11 +1043,11 @@
                     </div>
                     <div class="summary-row">
                         <span class="summary-label">Shipping</span>
-                        <span class="summary-value" style="color:var(--clr-success,#2d7d4f);">Calculated at checkout</span>
+                        <span class="summary-value" style="color:#40ed8a;">Calculated at checkout</span>
                     </div>
                     <div class="summary-row">
                         <span class="summary-label">Tax</span>
-                        <span class="summary-value" style="color:var(--clr-success,#2d7d4f);">Included</span>
+                        <span class="summary-value" style="color:#40ed8a;">Included</span>
                     </div>
 
                     <div class="summary-row total-row">
@@ -1108,7 +1057,7 @@
 
                     <p class="summary-note">
                         Taxes included. Discounts and
-                        <a href="/shipping">shipping</a>
+                        <a href="/policies/payment-policy" style="color:#0089ff">payment</a>
                         calculated at checkout.
                     </p>
 

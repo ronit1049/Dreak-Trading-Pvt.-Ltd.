@@ -1,7 +1,7 @@
 /**
  * homepage.js
  * Handles two things on index.html:
- *   1. Cart badge — reads dreak_cart from localStorage and
+ *   1. Cart badge — reads liventra_cart from localStorage and
  *      keeps the .cart-count span in sync on every page load.
  *   2. Featured products section — fetches featured categories,
  *      builds dynamic filter tabs, then loads products per tab.
@@ -18,7 +18,7 @@ import { getProducts, getPrimaryImage, variantFinalPrice, formatINR } from "./pr
 ═══════════════════════════════════════════════════════ */
 function syncCartBadge() {
     try {
-        const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+        const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
         const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
         // index.html uses .cart-count inside .cart-icon
         document.querySelectorAll(".cart-count").forEach(el => {
@@ -114,7 +114,7 @@ async function loadProducts(categorySlug) {
             grid.innerHTML = products.map(buildProductCard).join("");
         }
     } catch (err) {
-        console.warn("[Dreak Trading] Featured products failed:", err);
+        console.warn("[Liventra] Featured products failed:", err);
         grid.innerHTML = `
             <div class="fp-empty">
                 <i class="fas fa-exclamation-circle"></i>
@@ -143,7 +143,7 @@ async function buildFeaturedTabs() {
         if (!subLevel) return
 
     } catch (err) {
-        console.warn("[Dreak Trading] Featured categories failed:", err);
+        console.warn("[Liventra] Featured categories failed:", err);
         // Fall back: render static "All" tab and load all products
         categories = [];
     }

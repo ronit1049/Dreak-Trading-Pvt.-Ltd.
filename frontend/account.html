@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account — Dreak Trading Pvt. Ltd.</title>
+    <title>My Account — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,78 +16,112 @@
 
     <style>
         .account-container {
-            min-height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
             padding: 60px 5%;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* CARD STYLE (same design language as homepage) */
         .account-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            width: 280px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
+            padding: 2.6rem 1.8rem;
+            border: 1px solid var(--black-border);
+            border-radius: 20px;
+            background: var(--black-card);
+            transition: all .35s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* The Gold Top-Line Glow */
+        .account-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
         }
 
         .account-card:hover {
+            border-color: var(--black-border-hover);
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* HEADINGS (match homepage style) */
-        .account-card h2 {
+        .account-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Icon Box Style */
+        .account-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: rgba(226, 161, 45, 0.08);
+            border: 1px solid var(--black-border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.3rem;
+            transition: all 0.3s;
+        }
+
+        .account-card:hover .account-icon-wrapper {
+            background: rgba(226, 161, 45, 0.15);
+            border-color: var(--gold-dark);
+        }
+
+        .account-icon-wrapper i {
+            color: var(--gold-dark) !important;
+            font-size: 1.4rem;
+        }
+
+        /* Typography */
+        .account-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            color: var(--text-on-dark);
         }
 
-        /* ICON STYLE */
-        .account-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
+        .account-desc {
+            font-size: .86rem;
+            color: var(--text-on-dark-2);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 3.2rem;
+            /* Keeps buttons aligned */
         }
 
-        /* BUTTONS (reuse system) */
+        /* Button Styling */
         .account-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 28px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-dark);
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: none;
         }
 
-        /* PRIMARY BUTTON (Logout) */
-        .logout-btn {
-            background: var(--primary-dark);
-            color: #fff;
-            font-family: 'Jost', sans-serif;
+        .account-card:hover .account-btn {
+            background: var(--gold-dark);
+            color: #000;
         }
-
-        /* SECONDARY BUTTON */
-        .order-btn {
-            background-color: var(--primary-dark);
-            color: #fff;
-            font-family: 'Jost', sans-serif;
-        }
-
-        .profile-btn {
-            background-color: var(--primary-dark);
-            color: #fff;
-            font-family: 'Jost', sans-serif;
-        }
-        
     </style>
 </head>
 
@@ -108,7 +142,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -237,39 +271,34 @@
 
     <!-- Account Content -->
     <div class="account-container">
-
         <div class="account-card">
-            <div class="account-icon">
-                <i class="fas fa-user"></i>
+            <div class="account-icon-wrapper">
+                <i class="fas fa-sign-out-alt"></i>
             </div>
-            <h2>My Account</h2>
-            <button id="logoutBtn" class="account-btn logout-btn">
-                Logout
-            </button>
+            <h2 class="account-title">Sign Out</h2>
+            <div class="account-desc">Access your account from another device or end your current session.</div>
+            <button id="logoutBtn" class="account-btn">Logout</button>
         </div>
 
         <div class="account-card">
-            <div class="account-icon">
+            <div class="account-icon-wrapper">
                 <i class="fas fa-shopping-bag"></i>
             </div>
-            <h2>Order History</h2>
-            <button id="orderBtn" class="account-btn order-btn">
-                My Orders
-            </button>
+            <h2 class="account-title">Order History</h2>
+            <div class="account-desc">Track your recent shipments and view detailed receipts of past purchases.</div>
+            <button id="orderBtn" class="account-btn">My Orders</button>
         </div>
 
         <div class="account-card">
-            <div class="account-icon">
+            <div class="account-icon-wrapper">
                 <i class="fas fa-user"></i>
             </div>
-            <h2>Manage Account</h2>
-            <button id="profileBtn" class="account-btn profile-btn">
-                My Profile
-            </button>
+            <h2 class="account-title">Manage Account</h2>
+            <div class="account-desc">Update your personal details, email preferences, and security settings.</div>
+            <button id="profileBtn" class="account-btn">My Profile</button>
         </div>
-
     </div>
-    
+
     <!-- WHATSAPP -->
     <a href="https://wa.me/+91811512115" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
@@ -324,18 +353,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
                 <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -386,7 +416,7 @@
         // cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -436,7 +466,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -518,7 +548,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 

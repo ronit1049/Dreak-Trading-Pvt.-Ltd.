@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Detail — Dreak Trading Pvt. Ltd.</title>
+    <title>Order Detail — Liventra Furniture & Decor</title>
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -895,7 +895,7 @@
                     </div>
                     <div class="announcement-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>2-Year Warranty</span>
+                        <span>1-Year Warranty</span>
                     </div>
                 </div>
                 <div class="announcement-right">
@@ -1144,18 +1144,19 @@
             </div>
             <div class="footer-col footer-contact">
                 <h4>Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p><i class="fas fa-map-marker-alt"></i> Azad Hind Sadak, Ghurni<br>Krishnanagar, Nadia<br>West Bengal -
+                    741103<br>India</p>
                 <p><i class="fas fa-phone"></i> +91 81151 12115</p>
-                <p><i class="fas fa-envelope"></i> dreak.trading.pvt.ltd@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> info@dreaktrading.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>&COPY; 2026, Dreak Trading Pvt. Ltd. All rights reserved.</div>
+            <div>&COPY; 2026, Liventra Furniture & Decor. All rights reserved.</div>
             <div class="policies">
                 <a href="/policies/refund-policy">Refund policy</a>&middot;
                 <a href="/policies/privacy-policy">Privacy policy</a>&middot;
-                <a href="/policies/terms-of-service">Terms of service</a>&middot;
-                <a href="/policies/shipping-policy">Shipping policy</a>
+                <a href="/policies/terms-of-service">Terms of use</a>&middot;
+                <a href="/policies/payment-policy">Payment policy</a>
             </div>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
@@ -1250,7 +1251,7 @@
         /* ── Render full page ── */
         function render(order) {
             orderData = order;
-            document.title = `${order.orderNumber} — Dreak Trading`;
+            document.title = `${order.orderNumber} — Liventra Furniture & Decor`;
             document.getElementById("bc-order-num").textContent = order.orderNumber;
 
             const canCancel = ["Pending", "Confirmed"].includes(order.orderStatus);
@@ -1415,7 +1416,7 @@
           </p>` : ""}
 
           <a href="${BASE_URL}/order/generate-invoice-customer/${orderId}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border:1.5px solid var(--primary-dark);border-radius:var(--radius);font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary-dark);text-decoration:none;transition:all var(--transition)">
-            📄 <span>Download Invoice</span>
+            <i class="fas fa-file-alt"></i> <span>Download Invoice</span>
           </a>
 
           <a href="/orders" style="display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;letter-spacing:0.06em;color:var(--primary-dark);text-decoration:none;padding:8px 0;transition:color var(--transition)">
@@ -1427,10 +1428,10 @@
       <!-- Need Help -->
       <div class="card">
         <div class="card-body" style="text-align:center;padding:20px 24px">
-          <div style="font-size:22px;margin-bottom:8px">💬</div>
+          <div style="font-size:22px;margin-bottom:8px"><i class="fas fa-headset"></i></div>
           <div style="font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--primary-dark);margin-bottom:6px">Need help?</div>
           <p style="font-size:12px;color:var(--primary-dark);margin-bottom:14px;line-height:1.6">For any order-related queries, reach out to our support team.</p>
-          <a href="mailto:dreak.trading.pvt.ltd@gmail.com" style="font-size:12px;color:var(--primary);text-decoration:none;letter-spacing:0.05em">dreak.trading.pvt.ltd@gmail.com</a>
+          <a href="mailto:info@dreaktrading.com" style="font-size:12px;color:var(--primary);text-decoration:none;letter-spacing:0.05em">info@dreaktrading.com</a>
         </div>
       </div>`;
 
@@ -1440,7 +1441,7 @@
                     retryBtn.addEventListener("click", handleRetryPayment)
                 }
             }
-            
+
             if (canCancel) {
                 const cancelBtn = document.getElementById("cancel-btn");
                 if (cancelBtn) {
@@ -1523,7 +1524,7 @@
                     key,
                     amount,
                     currency: "INR",
-                    name: "Dreak Trading Pvt. Ltd.",
+                    name: "Liventra Furniture & Decor",
                     description: `Order #${orderNumber}`,
                     order_id: razorpayOrderId,
                     prefill: {
@@ -1531,7 +1532,7 @@
                         contact: orderData?.shippingAddress?.phone || "",
                         email: userData?.data?.email || ""
                     },
-                    theme: { color: "#173054" },
+                    theme: { color: "#e2a12d" },
                     modal: {
                         ondismiss: () => {
                             btn.disabled = false;
@@ -1580,6 +1581,42 @@
             }
         }
 
+        // Scroll to top
+        const backToTop = document.getElementById("backToTop");
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Show / Hide scroll buttons
+        const scrollUpBtn = document.getElementById("backToTop");
+        const scrollDownBtn = document.getElementById("scrollDown");
+
+        window.addEventListener("scroll", () => {
+
+            const scrollTop = window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            // Show UP button when user scrolls down
+            if (scrollTop > 200) {
+                scrollUpBtn.classList.add("show");
+            } else {
+                scrollUpBtn.classList.remove("show");
+            }
+
+            // Hide DOWN button at bottom
+            if (scrollTop + windowHeight >= pageHeight - 10) {
+                scrollDownBtn.style.display = "none";
+            } else {
+                scrollDownBtn.style.display = "flex";
+            }
+
+        });
+
         /* ── Load order ── */
         async function loadOrder() {
             if (!orderId) {
@@ -1606,7 +1643,7 @@
         // cart
         function syncCartBadge() {
             try {
-                const cart = JSON.parse(localStorage.getItem("dreak_cart")) || [];
+                const cart = JSON.parse(localStorage.getItem("liventra_cart")) || [];
                 const total = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
                 document.querySelectorAll(".cart-count").forEach(el => {
                     el.textContent = total;
@@ -1656,7 +1693,7 @@
                 megaGrid.innerHTML = cols.join("");
             } catch (err) {
                 // Silently fall back to the static HTML already in the DOM
-                console.warn("[Dreak Trading] Mega menu API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Mega menu API unavailable, using static fallback.", err);
             }
         }
 
@@ -1738,7 +1775,7 @@
                     )
                     .join("");
             } catch (err) {
-                console.warn("[Dreak Trading] Footer shop links API unavailable, using static fallback.", err);
+                console.warn("[Liventra] Footer shop links API unavailable, using static fallback.", err);
             }
         }
 
